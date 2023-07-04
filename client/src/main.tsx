@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 
+// react
+
 // style font
 import "@fontsource/quicksand/300.css";
 import "@fontsource/quicksand/400.css";

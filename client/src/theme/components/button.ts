@@ -8,31 +8,34 @@ export const Button = defineStyleConfig({
 		borderRadius: "4px",
 		border: "none",
 		color: "white",
-		fontWeight: 600,
+		fontWeight: 500,
+		_loading: {
+			color: "white",
+			bgColor: "primary.400",
+		},
 	},
 	// Styles for the size variations
 	sizes: {
 		small: {
-			fontSize: "xs",
-			px: "1rem",
-			height: "36px",
+			fontSize: "12px",
+			px: "24px",
+			height: "38px",
 		},
 		medium: {
-			fontSize: "xs",
-			px: "1rem",
+			fontSize: "14px",
+			px: "24px",
 			height: "42px",
-			bgColor: "red",
 		},
 		lager: {
-			fontSize: "xs",
-			px: "1rem",
-			height: "48px",
+			fontSize: "14px",
+			px: "24px",
+			height: "46px",
 		},
 	},
 	// Styles for the visual style variations
 	variants: {
 		primary: {
-			bgColor: "yellow",
+			bgColor: "primary.400",
 		},
 	},
 	// The default `size` or `variant` values
