@@ -11,6 +11,7 @@ import { NotFoundView } from "~/views/404";
 import { LoginView } from "~/views/Login";
 import { RegisterView } from "~/views/Register";
 
+
 const routes: RouteObject[] = [
 	{
 		path: "/",

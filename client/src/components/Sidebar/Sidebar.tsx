@@ -134,20 +134,6 @@ const Sidebar = (props: Props) => {
 					);
 				})}
 			</Flex>
-			{/* <Center>
-				<Link
-					as={ReactLink}
-					to="/profile"
-				>
-					<Img
-						borderRadius="full"
-						boxSize="54px"
-						objectFit="cover"
-						objectPosition="top"
-						src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-gai-xinh-Viet-Nam.jpg"
-					/>
-				</Link>
-			</Center> */}
 		</Flex>
 	);
 };
