@@ -51,7 +51,6 @@ const links: ILinks[] = [
 ];
 
 const Sidebar = (props: Props) => {
-	const [isActive, setIsActive] = useState<boolean>(false);
 	return (
 		<Flex
 			w="full"
@@ -86,13 +85,13 @@ const Sidebar = (props: Props) => {
 							rounded={8}
 							transition="all 0.25s ease"
 							_hover={{
-								bg: "#ea6a121a",
+								bg: "#ff666d1a",
 								textDecoration: "none",
 							}}
 							_activeLink={{
 								"& button": {
 									color: "primary.100",
-									bgColor: "#ea6a121a",
+									bgColor: "#ff666d1a",
 								},
 								"& svg": {
 									color: "primary.100",
@@ -103,17 +102,18 @@ const Sidebar = (props: Props) => {
 								w="full"
 								size="lager"
 								color="text.300"
+								fontSize="xs"
 								fontWeight="semibold"
 								textDecoration="none"
 								bgColor="white"
 								justifyContent="flex-start"
 								_groupHover={{
 									color: "primary.100",
-									bgColor: "#ea6a121a",
+									bgColor: "#ff666d1a",
 								}}
 								_groupActive={{
 									color: "primary.100",
-									bgColor: "#ea6a121a",
+									bgColor: "#ff666d1a",
 								}}
 								leftIcon={
 									<Icon
@@ -134,7 +134,7 @@ const Sidebar = (props: Props) => {
 					);
 				})}
 			</Flex>
-			<Center>
+			{/* <Center>
 				<Link
 					as={ReactLink}
 					to="/profile"
@@ -147,7 +147,7 @@ const Sidebar = (props: Props) => {
 						src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-gai-xinh-Viet-Nam.jpg"
 					/>
 				</Link>
-			</Center>
+			</Center> */}
 		</Flex>
 	);
 };
