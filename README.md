@@ -16,7 +16,7 @@
     - `VD`: example.service.ts
     - `Lưu ý`: dùng method trong cấu hình axios nằm trong `utils/http.ts`
         + `VD`: xem trong `services/product.service.ts`
-* `Size chữ`: dùng mặc đinh của `Chakra-UI`
+* `Size font`: dùng mặc đinh của `Chakra-UI`
     - `2xs`: 10px
     - `xs`: 12px
     - `sm`: 14px
@@ -24,4 +24,8 @@
     - `lg`: 18px
     - `xl`: 20px
     - `2xl`: 24px
+* `Size button`: custom trong `themes/components/button.ts`
+    - `small`: nhỏ
+    - `medium`: trung bình
+    - `lager`: to 
 * `Khi nào nên dùng thư mục components trong từng thư mục nằm trong views `: Nếu trang đó chứa nhiều thành phần thì mn có thể tách ra từng component nhỏ rồi ghép lại vào nhé 🎉🎉🎉
