@@ -10,7 +10,7 @@ import {
   NumberInputStepper,
 } from "@chakra-ui/react";
 import { CartIcon, SettingIcon } from "~/components/Icons";
-// import Banner from "./components/Banner";
+import Banner from "./components/Banner";
 import HomeProductList, { ProductCard } from "./components/HomeProductList";
 import { useState } from "react";
 
@@ -116,7 +116,7 @@ const HomeView = (props: Props) => {
           </Button>
         </Flex>
         {/* End of search bar */}
-        {/* <Banner /> */}
+        <Banner />
         <HomeProductList
           selectProduct={handleSelect}
           products={Products}
