@@ -6,6 +6,8 @@
     - `BE|feat: nội dung commit`
     - `BE|fix: nội dung commit`
     - `BE|delete: nội dung commit`
+* `Quy ước đặt tên branch`:
+    - `VD`: giao diện trang chủ -> `giao-dien-trang-chu` 
 * `Đặt tên file trong thư mục`: views
     - Example/[index.ts, Example.tsx]
     - `Trong index.ts`: export { default as ExampleView } from "./Example.tsx"
