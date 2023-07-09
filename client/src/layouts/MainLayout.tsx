@@ -31,7 +31,6 @@ const MainLayout = (props: Props) => {
 				bg="bgGray"
 				area={"main"}
 				p="8"
-				h={1999}
 			>
 				<Outlet />
 			</GridItem>

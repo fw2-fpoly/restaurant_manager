@@ -10,6 +10,7 @@ import { OrderView } from "~/views/Order";
 import { NotFoundView } from "~/views/404";
 import { LoginView } from "~/views/Login";
 import { RegisterView } from "~/views/Register";
+import { Profile } from "~/views/Profile";
 
 
 const routes: RouteObject[] = [
@@ -34,6 +35,10 @@ const routes: RouteObject[] = [
 					{
 						path: "orders",
 						element: <OrderView />,
+					},
+					{
+						path: "profile",
+						element: <Profile />,
 					},
 					{
 						path: "*",
