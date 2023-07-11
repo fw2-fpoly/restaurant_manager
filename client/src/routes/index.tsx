@@ -6,6 +6,7 @@ import { TableView } from "~/views/Table";
 import { MenuView } from "~/views/Menu";
 import { OrderView } from "~/views/Order";
 import { NotFoundView } from "~/views/404";
+import { HistoryView } from "~/views/History";
 
 const routes: RouteObject[] = [
 	{
@@ -27,6 +28,10 @@ const routes: RouteObject[] = [
 			{
 				path: "orders",
 				element: <OrderView />,
+			},
+			{
+				path: "history",
+				element: <HistoryView />,
 			},
 			{
 				path: "*",
