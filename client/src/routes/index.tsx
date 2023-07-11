@@ -8,9 +8,13 @@ import { TableView } from "~/views/Table";
 import { MenuView } from "~/views/Menu";
 import { OrderView } from "~/views/Order";
 import { NotFoundView } from "~/views/404";
+
+import { HistoryView } from "~/views/History";
+
 import { LoginView } from "~/views/Login";
 import { RegisterView } from "~/views/Register";
 import { Profile } from "~/views/Profile";
+
 
 
 const routes: RouteObject[] = [
@@ -47,6 +51,14 @@ const routes: RouteObject[] = [
 				],
 			},
 			{
+
+				path: "history",
+				element: <HistoryView />,
+			},
+			{
+				path: "*",
+				element: <NotFoundView />,
+
 				element: <AuthLayout />,
 				children: [
 					{
@@ -58,6 +70,7 @@ const routes: RouteObject[] = [
 						element: <RegisterView />,
 					},
 				],
+
 			},
 		],
 	},

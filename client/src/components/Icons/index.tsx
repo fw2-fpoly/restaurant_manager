@@ -13,8 +13,40 @@ export const CheckIcon = (props: any) => (
   >
     <path d="m5.75 12.867 2.59 3.547a2 2 0 0 0 3.26-.043l6.65-9.621" />
   </Icon>
+
+export const SearchIcon = (props: any) => (
+  <Icon
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z"></path>
+    <path d="m21 21-4.35-4.35"></path>
+  </Icon>
+
 );
 
+export const MoreIcon = (props: any) => (
+  <Icon
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M12 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+    <path d="M19 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+    <path d="M5 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+  </Icon>
+);
 export const CopyIcon = (props: any) => (
   <Icon
     fill="none"
@@ -121,6 +153,9 @@ export const CartIcon = (props: any) => (
     <path d="M7.5 13.5h11.692a.375.375 0 0 0 .369-.301l1.35-6.75a.376.376 0 0 0-.37-.449H6" />
   </Icon>
 );
+
+
+
 
 export const BellIcon = (props: any) => (
   <Icon
@@ -344,3 +379,4 @@ export const LogoutIcon = (props: any) => (
 
 	</Icon>
 )
+
