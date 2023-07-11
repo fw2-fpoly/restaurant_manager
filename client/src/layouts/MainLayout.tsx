@@ -28,10 +28,9 @@ const MainLayout = (props: Props) => {
 			</GridItem>
 			<GridItem
 				pl="2"
-				bg="#fafafa"
+				bg="bgGray"
 				area={"main"}
 				p="8"
-				h={1999}
 			>
 				<Outlet />
 			</GridItem>

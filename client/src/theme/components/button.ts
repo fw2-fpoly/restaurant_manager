@@ -11,7 +11,7 @@ export const Button = defineStyleConfig({
 		fontWeight: 500,
 		_loading: {
 			color: "white",
-			bgColor: "primary.400",
+			bgColor: "primary.100",
 		},
 	},
 	// Styles for the size variations
@@ -35,7 +35,7 @@ export const Button = defineStyleConfig({
 	// Styles for the visual style variations
 	variants: {
 		primary: {
-			bgColor: "primary.400",
+			bgColor: "primary.100",
 		},
 	},
 	// The default `size` or `variant` values
