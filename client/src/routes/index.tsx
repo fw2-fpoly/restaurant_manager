@@ -45,20 +45,18 @@ const routes: RouteObject[] = [
 						element: <Profile />,
 					},
 					{
+
+						path: "history",
+						element: <HistoryView />,
+					},
+					{
 						path: "*",
 						element: <NotFoundView />,
 					},
 				],
 			},
 			{
-
-				path: "history",
-				element: <HistoryView />,
-			},
-			{
 				path: "*",
-				element: <NotFoundView />,
-
 				element: <AuthLayout />,
 				children: [
 					{

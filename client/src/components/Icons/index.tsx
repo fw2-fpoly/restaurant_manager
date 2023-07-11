@@ -13,8 +13,8 @@ export const CheckIcon = (props: any) => (
   >
     <path d="m5.75 12.867 2.59 3.547a2 2 0 0 0 3.26-.043l6.65-9.621" />
   </Icon>
-
-export const SearchIcon = (props: any) => (
+)
+export const SearchIconHistory = (props: any) => (
   <Icon
     fill="none"
     stroke="currentColor"
@@ -28,7 +28,6 @@ export const SearchIcon = (props: any) => (
     <path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z"></path>
     <path d="m21 21-4.35-4.35"></path>
   </Icon>
-
 );
 
 export const MoreIcon = (props: any) => (

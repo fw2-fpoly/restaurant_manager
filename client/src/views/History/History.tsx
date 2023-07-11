@@ -8,7 +8,7 @@ import {
   Tag,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { SearchIcon } from "~/components/Icons";
+import { SearchIconHistory } from "~/components/Icons";
 
 import { Grid, GridItem } from "@chakra-ui/react";
 import TableHistory from "./components/TableHistory";
@@ -16,7 +16,7 @@ import BoxDetailHistory from "./components/BoxDetailHistory";
 
 type Props = {};
 
-const History = (props: Props) => {
+const HistoryView = (props: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
   const [showDetail, setShowDetail] = useState<boolean>(true);
@@ -24,6 +24,7 @@ const History = (props: Props) => {
   useEffect(() => {
     setLoading(false);
   }, []);
+
   const handleChange = (event: any) => setValue(event.target.value);
   const handleClick = (event: any) => {
     console.log("abc");
@@ -60,7 +61,7 @@ const History = (props: Props) => {
                       fontSize="20px"
                       colorScheme="blue"
                       aria-label="Search database"
-                      icon={<SearchIcon />}
+                      icon={<SearchIconHistory />}
                       backgroundColor="none"
                       color="black"
                     />
@@ -91,4 +92,4 @@ const History = (props: Props) => {
   );
 };
 
-export default History;
+export default HistoryView;
