@@ -1,17 +1,12 @@
 import React from "react";
-import { Tag, Center } from "@chakra-ui/react";
+import { Tag, Center, Button } from "@chakra-ui/react";
 
 type Props = {};
 
 const TableView = (props: Props) => {
 	return (
 		<Center>
-			<Tag
-				size="lg"
-				fontSize="xs"
-			>
-				Home
-			</Tag>
+			<Button size="lager">Cick me</Button>
 		</Center>
 	);
 };
