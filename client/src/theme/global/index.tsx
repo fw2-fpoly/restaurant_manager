@@ -11,7 +11,8 @@ const GlobalStyles = {
 		},
 		bgGray: "#fafafa",
 		primary: {
-			100: "#ff666d",
+			font: "#be0101",
+			background: "#be01011a",
 		},
 	},
 };
