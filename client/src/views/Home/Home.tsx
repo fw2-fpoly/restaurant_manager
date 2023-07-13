@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { CartIcon, SettingIcon } from "~/components/Icons";
 import Banner from "./components/Banner";
-import HomeProductList, { ProductDetailModal } from "./components/HomeProductList";
+import HomeProductList, { ProductCard, ProductDetailModal } from "./components/HomeProductList";
 import { useState } from "react";
 
 type Props = {};
