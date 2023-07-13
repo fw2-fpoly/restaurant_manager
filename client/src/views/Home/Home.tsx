@@ -1,17 +1,11 @@
-import { Box, Flex, Spacer, Text } from "@chakra-ui/layout";
+import { Box, Center, Flex, Spacer, Text } from "@chakra-ui/layout";
 import SearchBar from "./components/SearchBar";
-import {
-  Button,
-  Img,
-  NumberDecrementStepper,
-  NumberIncrementStepper,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-} from "@chakra-ui/react";
-import { CartIcon, SettingIcon } from "~/components/Icons";
+import { Button } from "@chakra-ui/react";
+import { CartIcon } from "~/components/Icons";
 import Banner from "./components/Banner";
-import HomeProductList, { ProductCard } from "./components/HomeProductList";
+import HomeProductList, {
+  ProductDetailModal,
+} from "./components/HomeProductList";
 import { useState } from "react";
 
 type Props = {};
@@ -79,6 +73,9 @@ const HomeView = (props: Props) => {
     setSelectedProduct({ ...currentProduct });
   };
   const [selectedProduct, setSelectedProduct] = useState<{} | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const onCloseModal = () => setIsModalOpen(false);
+  const onOpenModal = () => setIsModalOpen(true);
   const defaultUserAvatar =
     "https://musicart.xboxlive.com/7/4d4d6500-0000-0000-0000-000000000002/504/image.jpg?w=1920&h=1080";
   const user = {
@@ -88,8 +85,16 @@ const HomeView = (props: Props) => {
   };
   console.log(selectedProduct);
   return (
-    <Flex backgroundColor="whiteAlpha.100">
-      <Box w={{ sm: "100%", md: "full" }} pr={10}>
+    <Center backgroundColor="whiteAlpha.100">
+      {selectedProduct && (
+        <ProductDetailModal
+          selectedProduct={selectedProduct}
+          onOpenModal={onOpenModal}
+          onCloseModal={onCloseModal}
+          isOpen={isModalOpen}
+        />
+      )}
+      <Box w="full" pr={10}>
         {/* Search bar */}
         <Flex justifyContent="space-between" w="100%" alignItems="center">
           <Text fontSize="sm" w="40%" as="span">
@@ -121,82 +126,10 @@ const HomeView = (props: Props) => {
           selectProduct={handleSelect}
           products={Products}
           categories={CategoryList}
+          openModal={onOpenModal}
         />
       </Box>
-      <Box
-        pl={5}
-        hideBelow="md"
-        w="30%"
-        borderLeft="1px"
-        borderLeftColor="blackAlpha.100"
-      >
-        <Flex
-          alignItems="center"
-          justify="space-around"
-          borderBottom="1px"
-          borderBottomColor="blackAlpha.100"
-          pb={5}
-        >
-          <Img
-            src={user.avatar ?? defaultUserAvatar}
-            w={10}
-            h={10}
-            rounded="full"
-            objectFit="cover"
-          />
-          <Text px={2} fontSize={14}>
-            {user.name}
-          </Text>
-          <Button
-            bg="gray.100"
-            rounded="full"
-            p={2}
-            color="black.500"
-            _hover={{ bg: "primary.100", color: "white" }}
-            fontWeight={400}
-          >
-            <SettingIcon boxSize={6} />
-          </Button>
-        </Flex>
-        {/* San pham duoc chon xuat hien o day */}
-        <Box my={10}>
-          {selectedProduct ? (
-            <Box>
-              <Text mb="5" textAlign="center">
-                Chi tiết
-              </Text>
-              <form action="">
-                <ProductCard isHomeViewed={true} product={selectedProduct} />
-                <NumberInput
-                  my={10}
-                  w="50%"
-                  mx="auto"
-                  defaultValue={1}
-                  min={1}
-                  max={10}
-                >
-                  <NumberInputField />
-                  <NumberInputStepper>
-                    <NumberIncrementStepper />
-                    <NumberDecrementStepper />
-                  </NumberInputStepper>
-                </NumberInput>
-                <Button rounded="full" w="full" _hover={{ bg: "red.500" }}>
-                  Thêm vào giỏ hàng
-                </Button>
-              </form>
-            </Box>
-          ) : (
-            <Box>
-              <Img src="https://cdn.dribbble.com/users/1058271/screenshots/3308780/media/178f7adc82972a23bd05f460662d533c.png?compress=1&resize=400x300&vertical=top" />
-              <Text my={10} fontSize={14} color="blackAlpha.500">
-                Có vẻ như là bạn chưa chọn sản phẩm nào?!
-              </Text>
-            </Box>
-          )}
-        </Box>
-      </Box>
-    </Flex>
+    </Center>
   );
 };
 
