@@ -14,7 +14,38 @@ export const CheckIcon = (props: any) => (
 		<path d="m5.75 12.867 2.59 3.547a2 2 0 0 0 3.26-.043l6.65-9.621" />
 	</Icon>
 );
+export const SearchIconHistory = (props: any) => (
+	<Icon
+		fill="none"
+		stroke="currentColor"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		stroke-width="2"
+		viewBox="0 0 24 24"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
+		<path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z"></path>
+		<path d="m21 21-4.35-4.35"></path>
+	</Icon>
+);
 
+export const MoreIcon = (props: any) => (
+	<Icon
+		fill="none"
+		stroke="currentColor"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		stroke-width="2"
+		viewBox="0 0 24 24"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
+		<path d="M12 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+		<path d="M19 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+		<path d="M5 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+	</Icon>
+);
 export const CopyIcon = (props: any) => (
 	<Icon
 		fill="none"
@@ -218,15 +249,94 @@ export const FacebookIcon = (props: any) => (
 		</g>
 	</Icon>
 );
-export const SearchIcon = (props: any) => (
+
+export const SearchIcon = ({ size = 46, strokeWidth = 2, color = "currentColor", ...props }) => (
+	<svg
+		width={size}
+		height={size}
+		fill="none"
+		stroke={color}
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		strokeWidth={strokeWidth}
+		viewBox="0 0 24 24"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
+		<path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z" />
+		<path d="m21 21-4.35-4.35" />
+	</svg>
+);
+
+export const StarIcon = ({ size = 46, color = "currentColor", ...props }) => (
+	<svg width={size} height={size} fill={color} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+		<path d="M18.469 22.5a.75.75 0 0 1-.44-.14L12 17.99l-6.029 4.37a.75.75 0 0 1-1.15-.847l2.35-6.965-6.093-4.178A.75.75 0 0 1 1.5 9h7.518l2.268-6.981a.75.75 0 0 1 1.427 0l2.27 6.984H22.5a.75.75 0 0 1 .424 1.369l-6.096 4.176 2.35 6.963a.75.75 0 0 1-.71.99Z" />
+	</svg>
+);
+
+export const CloseIcon = ({ size = 46, color = "currentColor", ...props }) => (
+	<svg width={size} height={size} fill={color} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+		<path d="M12 2.25c-5.376 0-9.75 4.374-9.75 9.75s4.374 9.75 9.75 9.75 9.75-4.374 9.75-9.75S17.376 2.25 12 2.25ZM16.06 15 15 16.06l-3-3-3 3L7.94 15l3-3-3-3L9 7.94l3 3 3-3L16.06 9l-3 3 3 3Z" />
+	</svg>
+);
+
+export const UserIcon = (props: any) => (
 	<Icon
-		width="46"
-		height="46"
 		fill="none"
 		stroke="currentColor"
-		stroke-linecap="round"
-		stroke-linejoin="round"
-		stroke-width="1.5"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		strokeWidth={1.5}
+		viewBox="0 0 24 24"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
+		<path d="M12 4.75a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 1 0 0-6.5z" />
+		<path d="M6.848 19.25h10.305c1.141 0 2.021-.982 1.488-1.992C17.856 15.773 16.068 14 12 14s-5.856 1.773-6.64 3.258c-.534 1.01.346 1.992 1.487 1.992Z" />
+	</Icon>
+);
+
+export const PassIcon = (props: any) => (
+	<Icon
+		fill="none"
+		stroke="currentColor"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		strokeWidth={1.5}
+		viewBox="0 0 24 24"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
+		<path d="M5.75 11.75a1 1 0 0 1 1-1h10.5a1 1 0 0 1 1 1v5.5a2 2 0 0 1-2 2h-8.5a2 2 0 0 1-2-2v-5.5Z" />
+		<path d="M7.75 10.5v-.157c0-1.562-.094-3.302.996-4.42C9.368 5.288 10.374 4.75 12 4.75c1.626 0 2.632.537 3.254 1.174 1.09 1.117.996 2.857.996 4.419v.157" />
+	</Icon>
+);
+
+export const LogoutIcon = (props: any) => (
+	<Icon
+		fill="none"
+		stroke="currentColor"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		strokeWidth={1.5}
+		viewBox="0 0 24 24"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
+		<path d="m15.75 8.75 3.5 3.25-3.5 3.25" />
+		<path d="M19 12h-8.25" />
+		<path d="M15.25 4.75h-8.5a2 2 0 0 0-2 2v10.5a2 2 0 0 0 2 2h8.5" />
+	</Icon>
+);
+export const Heart = (props: any) => (
+	<Icon
+		width={46}
+		height={46}
+		fill="none"
+		stroke="currentColor"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		strokeWidth={1.5}
 		viewBox="0 0 24 24"
 		xmlns="http://www.w3.org/2000/svg"
 		{...props}
@@ -235,18 +345,10 @@ export const SearchIcon = (props: any) => (
 		<g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
 		<g id="SVGRepo_iconCarrier">
 			{" "}
-			<path d="M19.25 19.25 15.5 15.5M4.75 11a6.25 6.25 0 1 1 12.5 0 6.25 6.25 0 0 1-12.5 0Z"></path>{" "}
-		</g>
-	</Icon>
-);
-
-export const PizzaIcon = (props: any) => (
-	<Icon width={46} height={46} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
-		<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-		<g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-		<g id="SVGRepo_iconCarrier">
-			{" "}
-			<path d="m9.281 2.86-.234.632-6 16.43-.164.445.75.75.445-.164 16.43-6 .633-.234-.164-.656S19.919 9.84 17.039 6.96 9.937 3.023 9.937 3.023l-.656-.164Zm.914 1.85c.853.265 3.627 1.19 5.766 3.33 2.139 2.138 3.064 4.912 3.328 5.765l-1.148.422a7.837 7.837 0 0 0-.328-1.055c-.457-1.134-1.31-2.622-2.836-4.149-1.527-1.526-3.015-2.355-4.149-2.812a9.408 9.408 0 0 0-1.055-.352l.422-1.148Zm-.914 2.556c.252.067.574.164.985.328.966.39 2.285 1.113 3.656 2.484.401.402.732.788 1.031 1.172a1.5 1.5 0 0 0 .047 3 1.49 1.49 0 0 0 1.29-.75c.031.076.087.161.116.234.17.422.261.756.328 1.008l-7.5 2.719a1.112 1.112 0 0 0-.984-.586 1.125 1.125 0 0 0-1.102 1.36l-2.18.796 2.626-7.195c.199.097.419.164.656.164a1.5 1.5 0 0 0 .375-2.953l.656-1.781Zm1.219 5.859a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" />{" "}
+			<path
+				d="M11.995 7.233c-1.45-1.623-3.867-2.06-5.683-.573-1.816 1.486-2.072 3.971-.645 5.73l6.328 5.86 6.329-5.86c1.426-1.759 1.201-4.26-.646-5.73-1.848-1.471-4.233-1.05-5.683.573Z"
+				clipRule="evenodd"
+			/>{" "}
 		</g>
 	</Icon>
 );
@@ -294,28 +396,13 @@ export const Start = (props: any) => (
 		</g>
 	</Icon>
 );
-
-export const Heart = (props: any) => (
-	<Icon
-		width={46}
-		height={46}
-		fill="none"
-		stroke="currentColor"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-		strokeWidth={1.5}
-		viewBox="0 0 24 24"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
+export const PizzaIcon = (props: any) => (
+	<Icon width={46} height={46} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
 		<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
 		<g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
 		<g id="SVGRepo_iconCarrier">
 			{" "}
-			<path
-				d="M11.995 7.233c-1.45-1.623-3.867-2.06-5.683-.573-1.816 1.486-2.072 3.971-.645 5.73l6.328 5.86 6.329-5.86c1.426-1.759 1.201-4.26-.646-5.73-1.848-1.471-4.233-1.05-5.683.573Z"
-				clipRule="evenodd"
-			/>{" "}
+			<path d="m9.281 2.86-.234.632-6 16.43-.164.445.75.75.445-.164 16.43-6 .633-.234-.164-.656S19.919 9.84 17.039 6.96 9.937 3.023 9.937 3.023l-.656-.164Zm.914 1.85c.853.265 3.627 1.19 5.766 3.33 2.139 2.138 3.064 4.912 3.328 5.765l-1.148.422a7.837 7.837 0 0 0-.328-1.055c-.457-1.134-1.31-2.622-2.836-4.149-1.527-1.526-3.015-2.355-4.149-2.812a9.408 9.408 0 0 0-1.055-.352l.422-1.148Zm-.914 2.556c.252.067.574.164.985.328.966.39 2.285 1.113 3.656 2.484.401.402.732.788 1.031 1.172a1.5 1.5 0 0 0 .047 3 1.49 1.49 0 0 0 1.29-.75c.031.076.087.161.116.234.17.422.261.756.328 1.008l-7.5 2.719a1.112 1.112 0 0 0-.984-.586 1.125 1.125 0 0 0-1.102 1.36l-2.18.796 2.626-7.195c.199.097.419.164.656.164a1.5 1.5 0 0 0 .375-2.953l.656-1.781Zm1.219 5.859a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" />{" "}
 		</g>
 	</Icon>
 );
