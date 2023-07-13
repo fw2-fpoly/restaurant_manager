@@ -27,13 +27,7 @@ export const CopyIcon = (props: any) => (
 		{...props}
 	>
 		<path d="M6.5 15.25v0a1.75 1.75 0 0 1-1.75-1.75V6.75a2 2 0 0 1 2-2h6.75c.966 0 1.75.784 1.75 1.75v0" />
-		<rect
-			width={10.5}
-			height={10.5}
-			x={8.75}
-			y={8.75}
-			rx={2}
-		/>
+		<rect width={10.5} height={10.5} x={8.75} y={8.75} rx={2} />
 	</Icon>
 );
 
@@ -55,12 +49,7 @@ export const LogoIcon = (props: any) => (
 );
 
 export const HomeIcon = (props: any) => (
-	<Icon
-		fill="currentColor"
-		viewBox="0 0 24 24"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
+	<Icon fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
 		<path
 			fillRule="evenodd"
 			d="m11.52 5.872 7.2 7.2v5.048a1.8 1.8 0 0 1-1.8 1.8H6.12a1.8 1.8 0 0 1-1.8-1.8v-5.048l7.2-7.2Zm6-.952v4.2l-2.4-2.4v-1.8a.6.6 0 0 1 .6-.6h1.2a.6.6 0 0 1 .6.6Z"
@@ -164,12 +153,7 @@ export const TableIcon = (props: any) => (
 );
 
 export const ArrowLeftCirleIcon = (props: any) => (
-	<Icon
-		fill="currentColor"
-		viewBox="0 0 24 24"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
+	<Icon fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
 		<path d="M16.828 11.736a27.683 27.683 0 0 1-.198-.019 9.873 9.873 0 0 0-.83-.057 813.608 813.608 0 0 0-4.187-.037 850.334 850.334 0 0 1-3.131-.025 1.463 1.463 0 0 1-.185-.019l-.041-.006.053-.057c.06-.066.11-.12.162-.172a10.121 10.121 0 0 0 1.819-2.54l.015-.028a1.21 1.21 0 0 0 .109-.257.353.353 0 0 0-.01-.16.619.619 0 0 1-.013-.062l-.005-.042-.042.008a.718.718 0 0 1-.074.01.304.304 0 0 0-.178.051c-.058.055-.11.116-.155.181-.035.05-.073.097-.115.141-.338.346-.676.69-1.016 1.035-.436.443-.871.887-1.305 1.332a4.047 4.047 0 0 0-.522.612c-.218.339-.185.62.111.943.284.309.582.643.91 1.023.24.276.477.554.714.832.257.302.515.603.774.903.1.12.215.226.345.313a.32.32 0 0 0 .16.039.229.229 0 0 0 .15-.044.323.323 0 0 0 .057-.313 2.116 2.116 0 0 0-.248-.361l-.062-.08-.896-1.152-1.043-1.344a.87.87 0 0 1-.076-.127l-.016-.03.566.028c.46.023.895.046 1.335.063.936.035 2.303.07 3.625.104 1.138.028 2.212.056 3.002.083.154.004.31-.007.462-.033.233-.037.351-.157.35-.356 0-.223-.132-.357-.37-.38Z" />
 		<path d="M2.938 9.451c-.832 3.27-.103 6.155 2.167 8.575l.18.186c1.22 1.22 2.738 1.972 3.942 2.496.517.226 3.167.5 3.885.393 4.262-.636 7.066-3.04 8.043-7.062.187-.788.28-1.595.277-2.405.005-1.907-.798-4.124-2.454-5.784-.17-.141-.34-.287-.505-.429-.356-.306-.724-.623-1.11-.894-2.943-2.071-6-2.083-9.088-.984-2.796.993-4.591 2.982-5.337 5.908Zm5.349-4.93c2.709-1.125 5.427-1.324 8.078.362.485.309 1.777 1.353 1.98 1.51l.013.01.011.012c1.034 1.096 2.219 3.102 2.192 5.163a10.516 10.516 0 0 1-.355 2.61c-.673 2.448-2.283 4.232-4.921 5.452-2.683 1.284-6.53-.014-7.553-.69a11.952 11.952 0 0 1-2.926-2.844c-1.263-1.788-1.546-4.358-.868-6.707a7.617 7.617 0 0 1 4.349-4.878Z" />
 	</Icon>
@@ -193,21 +177,9 @@ export const CodeIcon = (props: any) => (
 );
 
 export const GoogleIcon = (props: any) => (
-	<Icon
-		viewBox="0 0 32 32"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
-		<g
-			id="SVGRepo_bgCarrier"
-			strokeWidth="0"
-		></g>
-		<g
-			id="SVGRepo_tracerCarrier"
-			strokeLinecap="round"
-			strokeLinejoin="round"
-		></g>
+	<Icon viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+		<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+		<g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
 		<g id="SVGRepo_iconCarrier">
 			{" "}
 			<path
@@ -231,35 +203,119 @@ export const GoogleIcon = (props: any) => (
 );
 
 export const FacebookIcon = (props: any) => (
-	<Icon
-		viewBox="0 0 48 48"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
-		<g
-			id="SVGRepo_bgCarrier"
-			strokeWidth="0"
-		></g>
-		<g
-			id="SVGRepo_tracerCarrier"
-			strokeLinecap="round"
-			strokeLinejoin="round"
-		></g>
+	<Icon viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+		<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+		<g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
 		<g id="SVGRepo_iconCarrier">
 			{" "}
-			<circle
-				cx="24"
-				cy="24"
-				r="20"
-				fill="#3B5998"
-			></circle>{" "}
+			<circle cx="24" cy="24" r="20" fill="#3B5998"></circle>{" "}
 			<path
 				fillRule="evenodd"
 				clipRule="evenodd"
 				d="M29.315 16.9578C28.6917 16.8331 27.8498 16.74 27.3204 16.74C25.8867 16.74 25.7936 17.3633 25.7936 18.3607V20.1361H29.3774L29.065 23.8137H25.7936V35H21.3063V23.8137H19V20.1361H21.3063V17.8613C21.3063 14.7453 22.7708 13 26.4477 13C27.7252 13 28.6602 13.187 29.8753 13.4363L29.315 16.9578Z"
 				fill="white"
 			></path>{" "}
+		</g>
+	</Icon>
+);
+export const SearchIcon = (props: any) => (
+	<Icon
+		width="46"
+		height="46"
+		fill="none"
+		stroke="currentColor"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		stroke-width="1.5"
+		viewBox="0 0 24 24"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
+		<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+		<g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+		<g id="SVGRepo_iconCarrier">
+			{" "}
+			<path d="M19.25 19.25 15.5 15.5M4.75 11a6.25 6.25 0 1 1 12.5 0 6.25 6.25 0 0 1-12.5 0Z"></path>{" "}
+		</g>
+	</Icon>
+);
+
+export const PizzaIcon = (props: any) => (
+	<Icon width={46} height={46} fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>
+		<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+		<g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+		<g id="SVGRepo_iconCarrier">
+			{" "}
+			<path d="m9.281 2.86-.234.632-6 16.43-.164.445.75.75.445-.164 16.43-6 .633-.234-.164-.656S19.919 9.84 17.039 6.96 9.937 3.023 9.937 3.023l-.656-.164Zm.914 1.85c.853.265 3.627 1.19 5.766 3.33 2.139 2.138 3.064 4.912 3.328 5.765l-1.148.422a7.837 7.837 0 0 0-.328-1.055c-.457-1.134-1.31-2.622-2.836-4.149-1.527-1.526-3.015-2.355-4.149-2.812a9.408 9.408 0 0 0-1.055-.352l.422-1.148Zm-.914 2.556c.252.067.574.164.985.328.966.39 2.285 1.113 3.656 2.484.401.402.732.788 1.031 1.172a1.5 1.5 0 0 0 .047 3 1.49 1.49 0 0 0 1.29-.75c.031.076.087.161.116.234.17.422.261.756.328 1.008l-7.5 2.719a1.112 1.112 0 0 0-.984-.586 1.125 1.125 0 0 0-1.102 1.36l-2.18.796 2.626-7.195c.199.097.419.164.656.164a1.5 1.5 0 0 0 .375-2.953l.656-1.781Zm1.219 5.859a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25Z" />{" "}
+		</g>
+	</Icon>
+);
+export const Plus = (props: any) => (
+	<Icon
+		width={46}
+		height={46}
+		fill="none"
+		stroke="currentColor"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		strokeWidth={1.5}
+		viewBox="0 0 24 24"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
+		<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+		<g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+		<g id="SVGRepo_iconCarrier">
+			{" "}
+			<path d="M12 5.75v12.5" />
+			<path d="M18.25 12H5.75" />{" "}
+		</g>
+	</Icon>
+);
+
+export const Start = (props: any) => (
+	<Icon
+		width={46}
+		height={46}
+		fill="none"
+		stroke="currentColor"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		strokeWidth={1.5}
+		viewBox="0 0 24 24"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
+		<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+		<g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+		<g id="SVGRepo_iconCarrier">
+			{" "}
+			<path d="m12 4.75 1.75 5.5h5.5l-4.5 3.5 1.5 5.5-4.25-3.5-4.25 3.5 1.5-5.5-4.5-3.5h5.5L12 4.75Z" />{" "}
+		</g>
+	</Icon>
+);
+
+export const Heart = (props: any) => (
+	<Icon
+		width={46}
+		height={46}
+		fill="none"
+		stroke="currentColor"
+		strokeLinecap="round"
+		strokeLinejoin="round"
+		strokeWidth={1.5}
+		viewBox="0 0 24 24"
+		xmlns="http://www.w3.org/2000/svg"
+		{...props}
+	>
+		<g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+		<g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+		<g id="SVGRepo_iconCarrier">
+			{" "}
+			<path
+				d="M11.995 7.233c-1.45-1.623-3.867-2.06-5.683-.573-1.816 1.486-2.072 3.971-.645 5.73l6.328 5.86 6.329-5.86c1.426-1.759 1.201-4.26-.646-5.73-1.848-1.471-4.233-1.05-5.683.573Z"
+				clipRule="evenodd"
+			/>{" "}
 		</g>
 	</Icon>
 );
