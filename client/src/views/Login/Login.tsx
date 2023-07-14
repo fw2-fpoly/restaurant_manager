@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import Joi from "joi";
+import * as Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { ArrowLeftCirleIcon, CodeIcon, GoogleIcon, FacebookIcon } from "~/components/Icons";
 import {
@@ -75,7 +75,7 @@ const LoginView = (props: Props) => {
 				>
 					<Heading
 						as="h3"
-						color="primary.100"
+						color="primary.font"
 						size="lg"
 						fontWeight="semibold"
 					>
@@ -92,7 +92,7 @@ const LoginView = (props: Props) => {
 						<CodeIcon
 							boxSize="5"
 							position="absolute"
-							color="primary.100"
+							color="primary.font"
 						/>
 					</Heading>
 				</Stack>
@@ -127,7 +127,7 @@ const LoginView = (props: Props) => {
 							<Text
 								fontSize="sm"
 								fontWeight="medium"
-								color="primary.100"
+								color="primary.font"
 							>
 								Đăng Ký
 							</Text>
@@ -173,6 +173,7 @@ const LoginView = (props: Props) => {
 							type="submit"
 							w="full"
 							mt="4"
+							rounded="full"
 						>
 							Đăng Nhập
 						</Button>
@@ -201,6 +202,7 @@ const LoginView = (props: Props) => {
 						w="full"
 						bgColor="white"
 						color="text.200"
+						rounded="full"
 						border="1px solid"
 						borderColor="text.300"
 					>
@@ -211,6 +213,7 @@ const LoginView = (props: Props) => {
 						leftIcon={<FacebookIcon boxSize="5" />}
 						w="full"
 						bgColor="white"
+						rounded="full"
 						color="text.200"
 						border="1px solid"
 						borderColor="text.300"

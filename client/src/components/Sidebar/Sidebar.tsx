@@ -62,7 +62,7 @@ const Sidebar = (props: Props) => {
 				<Box>
 					<LogoIcon
 						boxSize={10}
-						color="primary.100"
+						color="primary.font"
 					/>
 				</Box>
 			</Center>
@@ -85,16 +85,16 @@ const Sidebar = (props: Props) => {
 							rounded={8}
 							transition="all 0.25s ease"
 							_hover={{
-								bg: "#ff666d1a",
+								bg: "primary.background",
 								textDecoration: "none",
 							}}
 							_activeLink={{
 								"& button": {
-									color: "primary.100",
-									bgColor: "#ff666d1a",
+									color: "primary.font",
+									bgColor: "primary.background",
 								},
 								"& svg": {
-									color: "primary.100",
+									color: "primary.font",
 								},
 							}}
 						>
@@ -108,22 +108,22 @@ const Sidebar = (props: Props) => {
 								bgColor="white"
 								justifyContent="flex-start"
 								_groupHover={{
-									color: "primary.100",
-									bgColor: "#ff666d1a",
+									color: "primary.font",
+									bgColor: "primary.background",
 								}}
 								_groupActive={{
-									color: "primary.100",
-									bgColor: "#ff666d1a",
+									color: "primary.font",
+									bgColor: "primary.background",
 								}}
 								leftIcon={
 									<Icon
 										boxSize="5"
 										color="text.300"
 										_groupHover={{
-											color: "primary.100",
+											color: "primary.font",
 										}}
 										_groupActive={{
-											color: "primary.100",
+											color: "primary.font",
 										}}
 									/>
 								}
