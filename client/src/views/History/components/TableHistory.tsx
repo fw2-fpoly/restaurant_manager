@@ -22,7 +22,6 @@ const TableHistory = (props: Props) => {
       <TableContainer
         borderRadius="8px"
         background="#ffffff"
-        boxShadow="md"
       >
         <Table size="md" variant="simple">
           <Thead>

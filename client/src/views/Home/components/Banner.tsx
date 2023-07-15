@@ -11,24 +11,23 @@ import { Img } from "@chakra-ui/react";
 
 const Banner = () => {
   return (
-    <Box my={5}>
+    <Box w="100%" h="100%">
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         slidesPerView="auto"
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
         }}
+        style={{ height: "100%",overflow:"hidden" }}
       >
         <SwiperSlide>
           <Img
             rounded="lg"
             w="100%"
-            h="250"
+            h="100%"
             objectFit="cover"
-            src="https://img.freepik.com/free-vector/flat-design-food-banner-template_23-2149076251.jpg?w=826&t=st=1688718725~exp=1688719325~hmac=c23a02f4f44fda8bc0d2db4839a491f69f755d1413bae6e048ea0be01976eed8"
+            src="https://thuthuatnhanh.com/wp-content/uploads/2021/06/hinh-anh-nhat-ban-dep.jpg"
             alt=""
           />
         </SwiperSlide>
@@ -36,9 +35,19 @@ const Banner = () => {
           <Img
             rounded="lg"
             w="100%"
-            h="250"
+            h="100%"
             objectFit="cover"
-            src="https://img.freepik.com/free-vector/flat-design-pizza-sale-banner_23-2149116013.jpg?w=826&t=st=1688717306~exp=1688717906~hmac=afb9cc14a1065d517cf2553fc59efd2fbde8f050dfddb4a68225e9343cb9eadd"
+            src="https://thuthuatnhanh.com/wp-content/uploads/2021/06/hinh-anh-nhat-ban-dep.jpg"
+            alt=""
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Img
+            rounded="lg"
+            w="100%"
+            h="100%"
+            objectFit="cover"
+            src="https://thuthuatnhanh.com/wp-content/uploads/2021/06/hinh-anh-nhat-ban-dep.jpg"
             alt=""
           />
         </SwiperSlide>

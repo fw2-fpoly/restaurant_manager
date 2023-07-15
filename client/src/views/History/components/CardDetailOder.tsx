@@ -1,41 +1,48 @@
 import React from "react";
-import { Box, Center, Flex, Spacer } from "@chakra-ui/layout";
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
+import { Box, Center, Flex, Spacer,HStack } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
-import { Heading } from "@chakra-ui/react";
 
 type Props = {};
 
 const CardDetailOder = (props: Props) => {
   return (
-    <Card
-      direction={{ base: "column", sm: "row" }}
-      overflow="hidden"
-      variant="outline"
-      alignItems="center"
-      border="none"
-    >
-      <Image
-        objectFit="cover"
-        w={24}
-        h={24}
-        borderRadius="16px"
-        src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-        alt="Caffe Latte"
-      />
-
-      <CardBody pr={0} pl={4}>
-        <Heading size="md">The perfect latte</Heading>
-        <Text py="2" size="xs" color="#ccc">
-          Note:
-        </Text>
-        <Flex justifyContent="space-between" alignItems="center">
-          <Text size="xs">$2.87 X 4</Text>
-          <Text size="xs">$10.00</Text>
-        </Flex>
-      </CardBody>
-    </Card>
+    <Box marginTop="10px">
+      <HStack
+        alignItems="flex-start"
+        paddingY="14px"
+        borderBottom="1px solid  rgb(228 228 231)"
+      >
+        <Box width="20%" borderRadius="16px" overflow="hidden" marginTop="6px">
+          <Image
+            src="https://i.pinimg.com/originals/60/10/4a/60104a06b2c5da9e7ab683b3d6cfdd15.jpg"
+            alt="Anh do an"
+          ></Image>
+        </Box>
+        <Box width="80%">
+          <Text fontSize="md" fontWeight="800">
+            Orange Juice
+          </Text>
+          <Text fontSize="xs" mt="2px" color="#b4b4b4">
+            Note: Less ice
+          </Text>
+          <Text fontSize="xs" mt="2px" color="#b4b4b4">
+            Extras: Extra Mazaredo
+          </Text>
+          <Flex justifyContent="space-between" marginTop="10px">
+            <HStack>
+              <Text fontSize="sm" color="rgb(113 113 122)">
+                $2,87
+              </Text>
+              <Text fontSize="xs" color="#b4b4b4">
+                x4
+              </Text>
+            </HStack>
+            <Text fontSize="sm">$11,48</Text>
+          </Flex>
+        </Box>
+      </HStack>
+    </Box>
   );
 };
 

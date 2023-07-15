@@ -33,7 +33,7 @@ const HistoryView = (props: Props) => {
     setShowDetail(!showDetail);
   };
   return (
-    <Center>
+    <Center my={10}>
       {loading ? (
         <Box>Loading...</Box>
       ) : (
@@ -41,14 +41,13 @@ const HistoryView = (props: Props) => {
           <GridItem
             w="full"
             h="full"
-            background="#ffffff"
             colSpan={showDetail ? 3 : 2}
-            borderRadius={8}
-            boxShadow="md"
+            bgColor="white"
+            borderRadius="8px"
           >
             <Flex>
               <Box w="50%" p={4}>
-                <InputGroup size="md" borderRadius="8px" boxShadow="md">
+                <InputGroup size="md" borderRadius="8px">
                   <Input
                     pr="4.5rem"
                     type="text"
@@ -73,7 +72,6 @@ const HistoryView = (props: Props) => {
                   placeholder="Select Date and Time"
                   size="md"
                   type="date"
-                  boxShadow="md"
                   border="none"
                   background="#FAFAFA"
                 />
@@ -83,7 +81,13 @@ const HistoryView = (props: Props) => {
               <TableHistory handleChangeShowDetail={handleChangeShowDetail} />
             </Box>
           </GridItem>
-          <GridItem colSpan={1} display={showDetail ? "none" : "block"}>
+
+          <GridItem
+            colSpan={1}
+            display={showDetail ? "none" : "block"}
+            bgColor="white"
+            borderRadius="8px"
+          >
             <BoxDetailHistory setShowDetail={setShowDetail} />
           </GridItem>
         </Grid>
