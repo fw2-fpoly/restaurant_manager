@@ -1,192 +1,433 @@
-import { Badge, Box, Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Flex, FormControl, FormLabel, Heading, Image, Img, Input, Radio, RadioGroup, Stack, Text } from '@chakra-ui/react'
-import { Link, NavLink } from 'react-router-dom';
-import { UserIcon, PassIcon, LogoutIcon } from '~/components/Icons';
-import { useState } from 'react';
+import {
+	Link,
+	Box,
+	Button,
+	Flex,
+	Grid,
+	Heading,
+	Img,
+	Input,
+	Radio,
+	RadioGroup,
+	Stack,
+	Text,
+	GridItem,
+	FormControl,
+	FormLabel,
+	FormErrorMessage,
+} from "@chakra-ui/react";
+import { Link as ReactRouteLink } from "react-router-dom";
+import { UserIcon, PassIcon, LogoutIcon } from "~/components/Icons";
+import * as Joi from "joi";
+import { useForm } from "react-hook-form";
+import { joiResolver } from "@hookform/resolvers/joi";
 
-type Props = {}
+type Props = {};
 
 interface ILinks {
-    title: string;
-    path: string;
-    icon: any;
+	title: string;
+	path: string;
+	icon: any;
 }
 
+const profileSchema = Joi.object({
+	firstname: Joi.string().trim().required().messages({
+		"string.empty": "First name không được để trống",
+		"any.required": "Trường first name là bắt buộc",
+	}),
+	lastname: Joi.string().trim().required().messages({
+		"string.empty": "Last Name không được để trống",
+		"any.required": "Trường last name là bắt buộc",
+	}),
+	email: Joi.string()
+		.trim()
+		.email({ tlds: { allow: false } })
+		.required()
+		.messages({
+			"string.email": "Email không đúng định dạng",
+			"string.empty": "Email không được để trống",
+			"any.required": "Trường email là bắt buộc",
+		}),
+	address: Joi.string().trim().required().messages({
+		"string.empty": "Địa chỉ không được để trống",
+		"any.required": "Trường địa chỉ là bắt buộc",
+	}),
+	phone: Joi.string().trim().required().messages({
+		"string.empty": "SDT không được để trống",
+		"any.required": "Trường phone là bắt buộc",
+	}),
+	date: Joi.string().trim().required().messages({
+		"string.empty": "Date không được để trống",
+		"any.required": "Trường date là bắt buộc",
+	}),
+	location: Joi.string().trim().required().messages({
+		"string.empty": "Vị trí không được để trống",
+		"any.required": "Trường vị trí là bắt buộc",
+	}),
+	code: Joi.string().trim().required().messages({
+		"string.empty": "Code không được để trống",
+		"any.required": "Trường code là bắt buộc",
+	}),
+});
 
 const links: ILinks[] = [
-    {
-        title: "Personal Infomation",
-        path: "/",
-        icon: UserIcon,
-    },
-    {
-        title: "Login & Password",
-        path: "/table",
-        icon: PassIcon,
-    },
-    {
-        title: "Logout",
-        path: "/history",
-        icon: LogoutIcon,
-    }
-
+	{
+		title: "Personal Infomation",
+		path: "",
+		icon: UserIcon,
+	},
+	{
+		title: "Login & Password",
+		path: "",
+		icon: PassIcon,
+	},
+	{
+		title: "Logout",
+		path: "/",
+		icon: LogoutIcon,
+	},
 ];
 
 const Profile = (props: Props) => {
-    const property = {
-        imageUrl: 'https://bit.ly/2Z4KKcF',
-        imageAlt: 'Rear view of modern home with pool',
-        beds: 3,
-        baths: 2,
-        title: 'Modern home in city center in the heart of historic Los Angeles',
-        formattedPrice: '$1,900.00',
-        reviewCount: 34,
-        rating: 4,
-    }
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<any>({
+		resolver: joiResolver(profileSchema),
+	});
 
-    const [value, setValue] = useState('')
-    const handleChange = (event: any) => setValue(event.target.value)
+	const onSubmit = async (data: any) => {
+		console.log(data);
+	};
 
+	return (
+		<Grid
+			w="full"
+			templateColumns="repeat(12, 1fr)"
+			gap="6"
+			h={"full"}
+		>
+			{/* Box 1 */}
+			<GridItem colSpan={3}>
+				<Box
+					h={"full"}
+					p={5}
+					mx={5}
+					bgColor={"white"}
+				>
+					<Img
+						borderRadius="full"
+						boxSize="160px"
+						objectFit="cover"
+						objectPosition="top"
+						mx="auto"
+						my="auto"
+						src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-gai-xinh-Viet-Nam.jpg"
+					/>
+					<Stack
+						mt="6"
+						spacing="3"
+					>
+						<Heading
+							size="md"
+							mx="auto"
+						>
+							Rose Sadan
+						</Heading>
+						<Text mx="auto">Raasi Kash</Text>
 
-    return (
-        <Flex
-            w="full"
-            direction="row"
-            gap="6"
-        >
-            <Card maxW="1000px" p="20px" m="20px" >
-                <CardBody>
-                    <Img
-                        borderRadius="full"
-                        boxSize="160px"
-                        objectFit="cover"
-                        objectPosition="top"
-                        mx="auto"
-                        my="auto"
-                        src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-gai-xinh-Viet-Nam.jpg"
-                    />
-                    <Stack mt='6' spacing='3'>
-                        <Heading size='md' mx="auto">Rose Sadan</Heading>
-                        <Text mx="auto">
-                            Raasi Kash
-                        </Text>
+						<div>
+							{links?.map((link: ILinks, index: number) => {
+								const Icon = link.icon;
+								return (
+									<Link
+										as={ReactRouteLink}
+										to={link.path}
+										key={index}
+										role="group"
+										w="full"
+										gap={1}
+										rounded={8}
+										transition="all 0.25s ease"
+										_hover={{
+											bg: "#ff666d1a",
+											textDecoration: "none",
+										}}
+										_activeLink={{
+											"& button": {
+												color: "primary.100",
+												bgColor: "#ff666d1a",
+											},
+											"& svg": {
+												color: "primary.100",
+											},
+										}}
+									>
+										<Button
+											w="full"
+											size="lager"
+											color="text.300"
+											fontWeight="semibold"
+											textDecoration="none"
+											bgColor="white"
+											justifyContent="flex-start"
+											_groupHover={{
+												color: "primary.100",
+												bgColor: "#ff666d1a",
+											}}
+											_groupActive={{
+												color: "primary.100",
+												bgColor: "#ff666d1a",
+											}}
+											leftIcon={
+												<Icon
+													boxSize="5"
+													color="text.300"
+													_groupHover={{
+														color: "primary.100",
+													}}
+													_groupActive={{
+														color: "primary.100",
+													}}
+												/>
+											}
+										>
+											{link.title}
+										</Button>
+									</Link>
+								);
+							})}
+						</div>
+					</Stack>
+				</Box>
+			</GridItem>
 
-                        <div>
-                            {links?.map((link: ILinks, index: number) => {
-                                const Icon = link.icon;
-                                return (
-                                    <Link
-                                        as={NavLink}
-                                        to={link.path}
-                                        key={index}
-                                        role="group"
-                                        w="full"
-                                        gap={1}
-                                        rounded={8}
-                                        transition="all 0.25s ease"
-                                        _hover={{
-                                            bg: "#ea6a121a",
-                                            textDecoration: "none",
-                                        }}
-                                        _activeLink={{
-                                            "& button": {
-                                                color: "primary.100",
-                                                bgColor: "#ea6a121a",
-                                            },
-                                            "& svg": {
-                                                color: "primary.100",
-                                            },
-                                        }}
-                                    >
-                                        <Button
-                                            w="full"
-                                            size="lager"
-                                            color="text.300"
-                                            fontWeight="semibold"
-                                            textDecoration="none"
-                                            bgColor="white"
-                                            justifyContent="flex-start"
-                                            _groupHover={{
-                                                color: "primary.100",
-                                                bgColor: "#ea6a121a",
-                                            }}
-                                            _groupActive={{
-                                                color: "primary.100",
-                                                bgColor: "#ea6a121a",
-                                            }}
-                                            leftIcon={
-                                                <Icon
-                                                    boxSize="5"
-                                                    color="text.300"
-                                                    _groupHover={{
-                                                        color: "primary.100",
-                                                    }}
-                                                    _groupActive={{
-                                                        color: "primary.100",
-                                                    }}
-                                                />
-                                            }
-                                        >
-                                            {link.title}
-                                        </Button>
-                                    </Link>
-                                );
-                            })}
-                        </div>
+			{/* Box 2 */}
+			<GridItem colSpan={9}>
+				<Box
+					p={8}
+					bgColor={"white"}
+				>
+					<Heading
+						size="md"
+						mx="auto"
+						my="20px"
+					>
+						Rose Sadan
+					</Heading>
 
-                    </Stack>
-                </CardBody>
+					<form
+						style={{
+							width: "100%",
+						}}
+						onSubmit={handleSubmit(onSubmit)}
+					>
+						<Flex
+							direction={"column"}
+							gap={4}
+						>
+							<RadioGroup defaultValue="2">
+								<Stack
+									spacing={5}
+									direction="row"
+								>
+									<Radio
+										colorScheme="orange"
+										value="1"
+									>
+										Male
+									</Radio>
+									<Radio
+										colorScheme="orange"
+										value="2"
+									>
+										Female
+									</Radio>
+								</Stack>
+							</RadioGroup>
+							<Flex
+								direction="row"
+								gap={4}
+							>
+								<FormControl
+									flex={1}
+									isInvalid={errors.firstname as any}
+								>
+									<FormLabel>First Name</FormLabel>
+									<Input
+										id="firstname"
+										type="firstname"
+										placeholder="First Name"
+										size="lager"
+										{...register("firstname")}
+									/>
+									<FormErrorMessage>
+										{(errors.firstname as any) && (errors?.firstname?.message as any)}
+									</FormErrorMessage>
+								</FormControl>
+								<FormControl
+									flex={1}
+									isInvalid={errors.lastname as any}
+								>
+									<FormLabel>Last Name</FormLabel>
+									<Input
+										id="lastname"
+										type="lastname"
+										placeholder="Last Name"
+										size="lager"
+										{...register("lastname")}
+									/>
+									<FormErrorMessage>
+										{(errors.lastname as any) && (errors?.lastname?.message as any)}
+									</FormErrorMessage>
+								</FormControl>
+							</Flex>
 
+							<FormControl
+								flex={1}
+								isInvalid={errors.email as any}
+							>
+								<FormLabel>Email</FormLabel>
+								<Input
+									id="email"
+									type="email"
+									placeholder="Email"
+									size="lager"
+									{...register("email")}
+								/>
+								<FormErrorMessage>
+									{(errors.email as any) && (errors?.email?.message as any)}
+								</FormErrorMessage>
+							</FormControl>
 
-            </Card>
-            <Box maxW='2000px' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-                <Image src={property.imageUrl} alt={property.imageAlt} />
+							<FormControl
+								flex={1}
+								isInvalid={errors.address as any}
+							>
+								<FormLabel>Address</FormLabel>
+								<Input
+									id="address"
+									type="address"
+									placeholder="Address"
+									size="lager"
+									{...register("address")}
+								/>
+								<FormErrorMessage>
+									{(errors.address as any) && (errors?.address?.message as any)}
+								</FormErrorMessage>
+							</FormControl>
 
-                <Box p='6'>
-                    <Box display='flex' alignItems='baseline'>
-                        <Badge borderRadius='full' px='2' colorScheme='teal'>
-                            New
-                        </Badge>
-                        <Box
-                            color='gray.500'
-                            fontWeight='semibold'
-                            letterSpacing='wide'
-                            fontSize='xs'
-                            textTransform='uppercase'
-                            ml='2'
-                        >
-                            {property.beds} beds &bull; {property.baths} baths
-                        </Box>
-                    </Box>
+							<Flex
+								direction="row"
+								gap={4}
+							>
+								<FormControl
+									flex={1}
+									isInvalid={errors.phone as any}
+								>
+									<FormLabel>Phone number</FormLabel>
+									<Input
+										id="phone"
+										type="phone"
+										placeholder="Phone"
+										size="lager"
+										{...register("phone")}
+									/>
 
-                    <>
-                        <Text mb='8px'>Value: {value}</Text>
-                        <Input
-                            value={value}
-                            onChange={handleChange}
-                            placeholder='Here is a sample placeholder'
-                            size='sm'
-                        />
-                    </>
+									<FormErrorMessage>
+										{(errors.phone as any) && (errors?.phone?.message as any)}
+									</FormErrorMessage>
+								</FormControl>
+								<FormControl
+									flex={1}
+									isInvalid={errors.date as any}
+								>
+									<FormLabel>Date of birth</FormLabel>
+									<Input
+										id="date"
+										type="date"
+										size="lager"
+										{...register("date")}
+									/>
+									<FormErrorMessage>
+										{(errors.date as any) && (errors?.date?.message as any)}
+									</FormErrorMessage>
+								</FormControl>
+							</Flex>
 
-                    <Box>
-                        {property.formattedPrice}
-                        <Box as='span' color='gray.600' fontSize='sm'>
-                            / wk
-                        </Box>
-                    </Box>
+							<Flex
+								direction="row"
+								gap={4}
+							>
+								<FormControl
+									flex={1}
+									isInvalid={errors.location as any}
+								>
+									<FormLabel>Location</FormLabel>
+									<Input
+										id="location"
+										type="location"
+										placeholder="Location"
+										size="lager"
+										{...register("location")}
+									/>
 
-                    <Box display='flex' mt='2' alignItems='center'>
-                        {Array(5)
-                            .fill('')
-                        }
-                        <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-                            {property.reviewCount} reviews
-                        </Box>
-                    </Box>
-                </Box>
-            </Box>
-        </Flex>
-    )
-}
+									<FormErrorMessage>
+										{(errors.location as any) && (errors?.location?.message as any)}
+									</FormErrorMessage>
+								</FormControl>
+								<FormControl
+									flex={1}
+									isInvalid={errors.code as any}
+								>
+									<FormLabel>Postal Code</FormLabel>
+									<Input
+										id="code"
+										type="code"
+										placeholder="Postal Code"
+										size="lager"
+										{...register("code")}
+									/>
+									<FormErrorMessage>
+										{(errors.code as any) && (errors?.code?.message as any)}
+									</FormErrorMessage>
+								</FormControl>
+							</Flex>
 
-export default Profile
+							<Flex
+								direction="row"
+								gap={4}
+							>
+								<FormControl flex={1}>
+									<Button
+										size="lager"
+										width="full"
+										border="1px"
+										backgroundColor="white"
+										color="orange"
+									>
+										Discash Changes
+									</Button>
+								</FormControl>
+								<FormControl flex={1}>
+									<Button
+										type="submit"
+										width="full"
+										size="lager"
+										backgroundColor="#ffc0781a"
+										color="#ffc078"
+									>
+										Save Changes
+									</Button>
+								</FormControl>
+							</Flex>
+						</Flex>
+					</form>
+				</Box>
+			</GridItem>
+		</Grid>
+	);
+};
+
+export default Profile;

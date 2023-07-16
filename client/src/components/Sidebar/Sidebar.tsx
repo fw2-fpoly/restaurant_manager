@@ -51,7 +51,6 @@ const links: ILinks[] = [
 ];
 
 const Sidebar = (props: Props) => {
-	const [isActive, setIsActive] = useState<boolean>(false);
 	return (
 		<Flex
 			w="full"
@@ -63,7 +62,7 @@ const Sidebar = (props: Props) => {
 				<Box>
 					<LogoIcon
 						boxSize={10}
-						color="primary.100"
+						color="primary.font"
 					/>
 				</Box>
 			</Center>
@@ -86,16 +85,16 @@ const Sidebar = (props: Props) => {
 							rounded={8}
 							transition="all 0.25s ease"
 							_hover={{
-								bg: "#ea6a121a",
+								bg: "primary.background",
 								textDecoration: "none",
 							}}
 							_activeLink={{
 								"& button": {
-									color: "primary.100",
-									bgColor: "#ea6a121a",
+									color: "primary.font",
+									bgColor: "primary.background",
 								},
 								"& svg": {
-									color: "primary.100",
+									color: "primary.font",
 								},
 							}}
 						>
@@ -103,27 +102,28 @@ const Sidebar = (props: Props) => {
 								w="full"
 								size="lager"
 								color="text.300"
+								fontSize="xs"
 								fontWeight="semibold"
 								textDecoration="none"
 								bgColor="white"
 								justifyContent="flex-start"
 								_groupHover={{
-									color: "primary.100",
-									bgColor: "#ea6a121a",
+									color: "primary.font",
+									bgColor: "primary.background",
 								}}
 								_groupActive={{
-									color: "primary.100",
-									bgColor: "#ea6a121a",
+									color: "primary.font",
+									bgColor: "primary.background",
 								}}
 								leftIcon={
 									<Icon
 										boxSize="5"
 										color="text.300"
 										_groupHover={{
-											color: "primary.100",
+											color: "primary.font",
 										}}
 										_groupActive={{
-											color: "primary.100",
+											color: "primary.font",
 										}}
 									/>
 								}
