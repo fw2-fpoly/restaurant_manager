@@ -1,6 +1,7 @@
 import { Grid, GridItem } from "@chakra-ui/layout";
 import { Outlet } from "react-router-dom";
 import { Header } from "~/components/Header";
+import { OrderDetail } from "~/components/OrderDetail";
 import { Sidebar } from "~/components/Sidebar";
 
 type Props = {};
@@ -31,6 +32,19 @@ const MainLayout = (props: Props) => {
         <Header />
         <Outlet />
       </GridItem>
+      {/* <GridItem
+        w="400px"
+        position="fixed"
+        top={6}
+        right={2}
+        py="8"
+        px="4"
+        h="90%"
+        bg="white"
+        borderRadius="2xl"
+      >
+        <OrderDetail />
+      </GridItem> */}
     </Grid>
   );
 };

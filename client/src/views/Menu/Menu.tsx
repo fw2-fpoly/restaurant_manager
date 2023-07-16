@@ -1,11 +1,11 @@
 import { Box, Grid, GridItem, Text, Flex } from "@chakra-ui/layout";
 import React, { useEffect, useState } from "react";
-import { CurrentOrder } from "~/components/currentOrder";
-import { CardProduct, ProductCard } from "~/components/ProductCard";
+import { CardProduct } from "~/components/ProductCard";
 import SearchBar from "./components/SearchBar";
 import { categoryList } from "~/utils/data";
 import { ICategory } from "~/interface/products";
 import CardCategory from "./components/CardCategory";
+import Filter from "./components/Filter";
 
 type Props = {};
 const data = [
@@ -101,25 +101,13 @@ const MenuView = (props: Props) => {
     }
   };
   return (
-    <Box
-      display={isOpen === true ? "flex" : "block"}
-      justifyContent={"space-between"}
-    >
+    <Box display="flex" justifyContent={"space-between"}>
       <Box width={"full"}>
-        <Grid templateColumns="repeat(2,1fr)">
-          <GridItem></GridItem>
-          <GridItem></GridItem>
-        </Grid>
-        <Grid templateColumns="repeat(2,1fr)" my={4}>
+        <Grid templateColumns="repeat(2,1fr)" my={4} gap={4}>
           <GridItem>
-            <Text>Danh mục sản phẩm</Text>
-            <Flex gap={4} my={4}>
-              {categoryList.map((item: ICategory) => {
-                return <CardCategory category={item} />;
-              })}
-            </Flex>
+            <Text>Lọc sản phẩm</Text>
+            <Filter />
           </GridItem>
-
           <GridItem>
             <Text>Tìm kiếm sản phâm</Text>
             <Flex my={4}>
@@ -127,19 +115,21 @@ const MenuView = (props: Props) => {
             </Flex>
           </GridItem>
         </Grid>
-
+        <Box>
+          <Text>Danh mục sản phẩm</Text>
+          <Flex gap={4} my={4}>
+            {categoryList.map((item: ICategory) => {
+              return <CardCategory category={item} />;
+            })}
+          </Flex>
+        </Box>
         <Box>
           <Box as={"h1"} marginY={"10"}>
             Danh sách sản phẩm
           </Box>
-          <Grid
-            templateColumns="repeat(5,1fr)"
-            gap={4}
-          >
+          <Grid templateColumns="repeat(5,1fr)" gap={4}>
             {data.map((item) => {
-              return (
-                <CardProduct />
-              );
+              return <CardProduct />;
             })}
           </Grid>
         </Box>

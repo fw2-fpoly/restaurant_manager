@@ -1,4 +1,4 @@
-import { Button, Text } from "@chakra-ui/react";
+import { Button, Text,Image  } from "@chakra-ui/react";
 import React from "react";
 import { CakeIcon } from "~/components/Icons";
 import { ICategory } from "~/interface/products";
@@ -10,14 +10,14 @@ type Props = {
 const CardCategory = ({ category }: Props) => {
   return (
     <Button
-      border="1px solid black"
       size="lager"
-      bg="gray.100"
+      bg="white"
       borderRadius="8px"
       color="black.500"
+      py={14}
       _hover={{ bg: "primary.100", color: "white" }}
-      leftIcon={<CakeIcon boxSize={"10"} />}
     >
+      <Image />
       <Text>{category.title}</Text>
     </Button>
   );

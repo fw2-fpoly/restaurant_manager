@@ -1,9 +1,11 @@
-import { Flex, Grid, Text, UnorderedList } from "@chakra-ui/layout";
+import { Flex, Grid, Text, Box, Spacer } from "@chakra-ui/layout";
 
 import { useState } from "react";
 import { ICategory, IProduct } from "~/interface/products";
 import CardCategory from "./CardCategory";
 import CardProduct from "./CardProduct";
+import { Button } from "@chakra-ui/react";
+import Title from "./Title";
 
 type Props = {
   categories: ICategory[];
@@ -15,27 +17,20 @@ type Props = {
 const HomeProductList = ({ categories, products }: Props) => {
   return (
     <>
-      <Flex alignItems="center" my={10}>
-        <UnorderedList
-          fontSize="sm"
-          w="full"
-          styleType="none"
-          display="grid"
-          gridTemplateColumns={"repeat(8,1fr)"}
-          gap={4}
-          alignItems="center"
-        >
-          <Text w="100px" fontSize="lg" fontWeight={900}>
-            Nổi bật
-          </Text>
-          {categories.map((item: ICategory) => (
-            <CardCategory key={item.title} category={item} />
-          ))}
-        </UnorderedList>
-      </Flex>
+      <Title title="Nổi bật" />
       <Grid
         my={5}
-        templateColumns={{ sm: "repeat(2, 1fr)", md: "repeat(5,1fr)" }}
+        templateColumns={{ sm: "repeat(3, 1fr)", md: "repeat(5,1fr)" }}
+        gap={6}
+      >
+        {products.map((product: IProduct) => (
+          <CardProduct />
+        ))}
+      </Grid>
+      <Title title="Bán chạy nhất" />
+      <Grid
+        my={5}
+        templateColumns={{ sm: "repeat(3, 1fr)", md: "repeat(5,1fr)" }}
         gap={6}
       >
         {products.map((product: IProduct) => (

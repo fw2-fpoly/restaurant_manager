@@ -536,8 +536,6 @@ export const IconHeart = ({
   </Icon>
 );
 
-
-
 export const IconAddCart = ({
   size = 36,
   strokeWidth = 2,
@@ -625,7 +623,6 @@ export const IconEye = ({
   </Icon>
 );
 
-
 export const IconChevronRight = ({
   size = 36,
   strokeWidth = 2,
@@ -648,3 +645,152 @@ export const IconChevronRight = ({
   </Icon>
 );
 
+export const IconChevronBack = ({
+  size = 36,
+  strokeWidth = 1.5,
+  color = "currentColor",
+  ...props
+}) => (
+  <Icon
+    width={size}
+    height={size}
+    fill="none"
+    stroke={color}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={strokeWidth}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M15.375 5.25 8.625 12l6.75 6.75" />
+  </Icon>
+);
+
+export const IconChevronFoward = ({
+  size = 36,
+  strokeWidth = 1.5,
+  color = "currentColor",
+  ...props
+}) => (
+  <Icon
+    width={size}
+    height={size}
+    fill="none"
+    stroke={color}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={strokeWidth}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="m8.625 5.25 6.75 6.75-6.75 6.75" />
+  </Icon>
+);
+// icon filter
+
+export const IconFilter = ({
+  size = 36,
+  strokeWidth = 1.5,
+  color = "currentColor",
+  ...props
+}) => (
+  <Icon
+    width={size}
+    height={size}
+    fill="none"
+    stroke={color}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={strokeWidth}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M1.5 6.75h21" />
+    <path d="M5.25 12h13.5" />
+    <path d="M9.75 17.25h4.5" />
+  </Icon>
+);
+
+// order detail
+
+export const WalletIcon = ({
+  size = 36,
+  strokeWidth = 1.5,
+  color = "currentColor",
+  ...props
+}) => (
+  <Icon
+    width={size}
+    height={size}
+    fill="none"
+    stroke={color}
+    strokeLinejoin="round"
+    strokeWidth={strokeWidth}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M19.5 6.75h-15A2.25 2.25 0 0 0 2.25 9v9a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9a2.25 2.25 0 0 0-2.25-2.25Z" />
+    <path d="M19.282 6.75V5.342A2.344 2.344 0 0 0 16.5 3.041L4.155 5.148A2.344 2.344 0 0 0 2.25 7.452V9.75" />
+    <path
+      fill={color}
+      stroke="none"
+      d="M17.25 15a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"
+    />
+  </Icon>
+);
+
+export const IconCash = ({
+  size = 36,
+  strokeWidth = 1.5,
+  color = "currentColor",
+  ...props
+}) => (
+  <Icon
+    width={size}
+    height={size}
+    fill="none"
+    stroke={color}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={strokeWidth}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M2.25 15.75h19.5a.75.75 0 0 0 .75-.75V4.5a.75.75 0 0 0-.75-.75H2.25a.75.75 0 0 0-.75.75V15c0 .414.336.75.75.75Z" />
+    <path d="M3 18h18" />
+    <path d="M4.5 20.25h15" />
+    <path d="M12 13.5A3.75 3.75 0 1 0 12 6a3.75 3.75 0 0 0 0 7.5Z" />
+    <path d="M22.5 7.5a3.75 3.75 0 0 1-3.75-3.75" />
+    <path d="M1.5 7.5a3.75 3.75 0 0 0 3.75-3.75" />
+    <path d="M22.5 12a3.75 3.75 0 0 0-3.75 3.75" />
+    <path d="M1.5 12a3.75 3.75 0 0 1 3.75 3.75" />
+  </Icon>
+);
+
+export const IconQrCode = ({ size = 36, color = "currentColor", ...props }) => (
+  <Icon
+    width={size}
+    height={size}
+    fill={color}
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M19.5 15.75h-3.75v3.75h3.75v-3.75Z" />
+    <path d="M15.75 12.75h-3v3h3v-3Z" />
+    <path d="M22.5 19.5h-3v3h3v-3Z" />
+    <path d="M22.5 12.75h-2.25V15h2.25v-2.25Z" />
+    <path d="M15 20.25h-2.25v2.25H15v-2.25Z" />
+    <path d="M19.5 4.5h-3.75v3.75h3.75V4.5Z" />
+    <path d="M22.5 11.25h-9.75V1.5h9.75v9.75Zm-7.688-2.063h5.626V3.564h-5.625v5.624Z" />
+    <path d="M8.25 4.5H4.5v3.75h3.75V4.5Z" />
+    <path d="M11.25 11.25H1.5V1.5h9.75v9.75ZM3.562 9.187h5.626V3.564H3.561v5.624Z" />
+    <path d="M8.25 15.75H4.5v3.75h3.75v-3.75Z" />
+    <path d="M11.25 22.5H1.5v-9.75h9.75v9.75Zm-7.688-2.063h5.626v-5.625H3.561v5.626Z" />
+  </Icon>
+);
