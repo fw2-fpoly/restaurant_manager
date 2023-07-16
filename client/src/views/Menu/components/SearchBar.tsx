@@ -8,9 +8,9 @@ type Props = {};
 
 const SearchBar = (props: Props) => {
   return (
-    <FormControl>
-      <InputGroup w="90%">
-        <Input placeholder="Tìm kiếm" borderRadius="8px" />
+    <FormControl border="none">
+      <InputGroup w="100%">
+        <Input placeholder="Tìm kiếm" borderRadius="8px" border="none" />
         <InputRightElement>
           <Button
             _hover={{ bg: "primary.100", color: "#ccc", borderRadius: "full" }}
