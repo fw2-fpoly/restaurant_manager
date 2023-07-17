@@ -151,16 +151,16 @@ const Profile = (props: Props) => {
 										rounded={8}
 										transition="all 0.25s ease"
 										_hover={{
-											bg: "#ff666d1a",
+											bg: "primary.background",
 											textDecoration: "none",
 										}}
 										_activeLink={{
 											"& button": {
-												color: "primary.100",
-												bgColor: "#ff666d1a",
+												color: "primary.font",
+												bgColor: "primary.background",
 											},
 											"& svg": {
-												color: "primary.100",
+												color: "primary.font",
 											},
 										}}
 									>
@@ -173,22 +173,22 @@ const Profile = (props: Props) => {
 											bgColor="white"
 											justifyContent="flex-start"
 											_groupHover={{
-												color: "primary.100",
-												bgColor: "#ff666d1a",
+												color: "primary.font",
+												bgColor: "primary.background",
 											}}
 											_groupActive={{
-												color: "primary.100",
-												bgColor: "#ff666d1a",
+												color: "primary.font",
+												bgColor: "primary.background",
 											}}
 											leftIcon={
 												<Icon
 													boxSize="5"
 													color="text.300"
 													_groupHover={{
-														color: "primary.100",
+														color: "primary.font",
 													}}
 													_groupActive={{
-														color: "primary.100",
+														color: "primary.font",
 													}}
 												/>
 											}
@@ -395,33 +395,20 @@ const Profile = (props: Props) => {
 								</FormControl>
 							</Flex>
 
-							<Flex
-								direction="row"
-								gap={4}
-							>
-								<FormControl flex={1}>
-									<Button
-										size="lager"
-										width="full"
-										border="1px"
-										backgroundColor="white"
-										color="orange"
-									>
-										Discash Changes
-									</Button>
-								</FormControl>
-								<FormControl flex={1}>
-									<Button
-										type="submit"
-										width="full"
-										size="lager"
-										backgroundColor="#ffc0781a"
-										color="#ffc078"
-									>
-										Save Changes
-									</Button>
-								</FormControl>
-							</Flex>
+
+
+							<FormControl >
+								<Button
+									type="submit"
+									width="full"
+									size="lager"
+									backgroundColor="primary.background"
+									color="primary.font"
+								>
+									Save Changes
+								</Button>
+							</FormControl>
+
 						</Flex>
 					</form>
 				</Box>
