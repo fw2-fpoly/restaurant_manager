@@ -10,7 +10,12 @@ import {
   Center,
 } from "@chakra-ui/layout";
 import { Button, Image, IconButton, Radio } from "@chakra-ui/react";
-import { IconCash, IconQrCode, LogoIcon, WalletIcon } from "../Icons";
+import {
+  IconCash,
+  IconQrCode,
+  LogoIcon,
+  WalletIcon,
+} from "../../../components/Icons";
 type Props = {};
 
 const payments = [
@@ -135,6 +140,41 @@ const OrderDetail = (props: Props) => {
           </Text>
           <Text fontSize="sm">$31,53</Text>
         </Flex>
+        <Box>
+          <Text fontSize="lg" my="4">
+            Available table
+          </Text>
+          <Grid gap={2} templateColumns="repeat(3, 1fr)">
+            {payments.map((item) => {
+              return (
+                <GridItem key={item.id}>
+                  <Button
+                    w="100%"
+                    h="auto"
+                    color="text.300"
+                    bgColor="gray.100"
+                    rounded="lg"
+                    px={2}
+                    py={4}
+                    display="flex"
+                    flexDirection="column"
+                  >
+                    <IconButton
+                      aria-label="payment"
+                      icon={item.icon}
+                      background="none"
+                      color="black"
+                    />
+                    <Text color="green">{item.name}</Text>
+                  </Button>
+                  <Radio value="1" visibility="hidden">
+                    First
+                  </Radio>
+                </GridItem>
+              );
+            })}
+          </Grid>
+        </Box>
         <Box>
           <Text fontSize="lg" my="4">
             Payment Methods

@@ -32,19 +32,7 @@ const MainLayout = (props: Props) => {
         <Header />
         <Outlet />
       </GridItem>
-      {/* <GridItem
-        w="400px"
-        position="fixed"
-        top={6}
-        right={2}
-        py="8"
-        px="4"
-        h="90%"
-        bg="white"
-        borderRadius="2xl"
-      >
-        <OrderDetail />
-      </GridItem> */}
+    
     </Grid>
   );
 };

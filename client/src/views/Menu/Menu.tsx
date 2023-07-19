@@ -6,6 +6,7 @@ import { categoryList } from "~/utils/data";
 import { ICategory } from "~/interface/products";
 import CardCategory from "./components/CardCategory";
 import Filter from "./components/Filter";
+import OrderDetail from "./components/OrderDetail";
 
 type Props = {};
 const data = [
@@ -67,43 +68,15 @@ const data = [
   },
 ];
 const MenuView = (props: Props) => {
-  const [isOpen, setOpen] = useState<boolean>(false);
-  const currentProduct: any[any] = [];
-  const array = localStorage.getItem("order");
-  if (!array) {
-    localStorage.setItem("order", JSON.stringify(currentProduct));
-  }
-  const arrayOrder = JSON.parse(array || "");
+  const [isOpen, setOpen] = useState<boolean>(true);
 
-  const openCurrent = (value: boolean) => {
-    setOpen(value);
-  };
-  const currentOrder = (product: any) => {
-    setOpen(true);
-    const filterOrder = arrayOrder.find((item: any) => item.id == product.id);
-    console.log(filterOrder);
-
-    if (filterOrder) {
-      const newarray = arrayOrder.map((item: any) => {
-        return item.id === filterOrder.id
-          ? { ...filterOrder, quantity: filterOrder.quantity + 1 }
-          : item;
-      });
-
-      return localStorage.setItem("order", JSON.stringify(newarray));
-    } else {
-      const newProduct = {
-        ...product,
-        quantity: 1,
-      };
-      arrayOrder.push(newProduct);
-      localStorage.setItem("order", JSON.stringify(arrayOrder));
-    }
+  const handleAddProduct = () => {
+    setOpen(false);
   };
   return (
-    <Box display="flex" justifyContent={"space-between"}>
-      <Box width={"full"}>
-        <Grid templateColumns="repeat(2,1fr)" my={4} gap={4}>
+    <Grid gridTemplateColumns="repeat(7,1fr)" gap={6}>
+      <GridItem width={"full"} colSpan={isOpen ? 7 : 5} my={4}>
+        <Grid templateColumns="repeat(2,1fr)" gap={4}>
           <GridItem>
             <Text>Lọc sản phẩm</Text>
             <Filter />
@@ -129,12 +102,24 @@ const MenuView = (props: Props) => {
           </Box>
           <Grid templateColumns="repeat(5,1fr)" gap={4}>
             {data.map((item) => {
-              return <CardProduct />;
+              return <CardProduct handleAddProduct={handleAddProduct}/>;
             })}
           </Grid>
         </Box>
-      </Box>
-    </Box>
+      </GridItem>
+      <GridItem
+        py="8"
+        colSpan={2}
+        px="4"
+        h="90%"
+        bg="white"
+        borderRadius="2xl"
+        my={4}
+        display={isOpen ? "none" : "block"}
+      >
+        <OrderDetail />
+      </GridItem>
+    </Grid>
   );
 };
 
