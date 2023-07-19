@@ -4,9 +4,10 @@ import { Text } from "@chakra-ui/react";
 
 type Props = {
   item: any;
+  handleOpenDetailTable: (id: string) => void;
 };
 
-const CardTable = (props: Props) => {
+const CardTable = ({ item, handleOpenDetailTable }: Props) => {
   return (
     <Box
       width="30%"
@@ -15,8 +16,10 @@ const CardTable = (props: Props) => {
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
+      onClick={() => handleOpenDetailTable("abc")}
+      cursor="pointer"
     >
-      {props.item.size === 6 && (
+      {item.size === 6 && (
         <Flex w="100%" my={2} gap={2} justifyContent="center">
           <Box
             width="20%"
@@ -41,7 +44,7 @@ const CardTable = (props: Props) => {
           ></Box>
         </Flex>
       )}
-      {props.item.size === 4 && (
+      {item.size === 4 && (
         <Flex w="100%" my={2} gap={2} justifyContent="center">
           <Box
             width="20%"
@@ -59,7 +62,7 @@ const CardTable = (props: Props) => {
           ></Box>
         </Flex>
       )}
-      {props.item.size === 2 && (
+      {item.size === 2 && (
         <Flex w="100%" my={2} gap={2} justifyContent="center">
           <Box
             width="20%"
@@ -72,12 +75,10 @@ const CardTable = (props: Props) => {
       )}
       <Box
         border={
-          props.item.status == "check-in"
-            ? `4px solid red`
-            : `4px solid yellow`
+          item.status == "check-in" ? `4px solid red` : `4px solid yellow`
         }
         borderRadius={16}
-        w={props.item.size == 2 ? `30%` : props.item.size == 4 ? `50%` : `80%`}
+        w={item.size == 2 ? `30%` : item.size == 4 ? `50%` : `80%`}
         height="60%"
       >
         <Text textAlign="center" lineHeight={10}>
@@ -85,7 +86,7 @@ const CardTable = (props: Props) => {
         </Text>
         <Text textAlign="center">#99999</Text>
       </Box>
-      {props.item.size === 6 && (
+      {item.size === 6 && (
         <Flex w="100%" my={2} gap={2} justifyContent="center">
           <Box
             width="20%"
@@ -110,7 +111,7 @@ const CardTable = (props: Props) => {
           ></Box>
         </Flex>
       )}
-      {props.item.size === 4 && (
+      {item.size === 4 && (
         <Flex w="100%" my={2} gap={2} justifyContent="center">
           <Box
             width="20%"
@@ -128,7 +129,7 @@ const CardTable = (props: Props) => {
           ></Box>
         </Flex>
       )}
-      {props.item.size === 2 && (
+      {item.size === 2 && (
         <Flex w="100%" my={2} gap={2} justifyContent="center">
           <Box
             width="20%"

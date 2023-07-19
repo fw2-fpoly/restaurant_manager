@@ -9,7 +9,7 @@ import Filter from "./components/Filter";
 import OrderDetail from "./components/OrderDetail";
 
 import { useSelector, useDispatch } from "react-redux";
-import { increment } from "~/store/slices/couterSlice";
+import { increment } from "~/store/slices/cartSlice";
 type Props = {};
 const data = [
 	{
