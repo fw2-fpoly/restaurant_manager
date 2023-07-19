@@ -11,7 +11,7 @@ type Props = {};
 
 const BreadcrumbHome = (props: Props) => {
   return (
-    <Breadcrumb spacing="8px" separator={<IconChevronRight boxSize={4}/>}>
+    <Breadcrumb spacing="8px" separator={<IconChevronRight boxSize={4} />}>
       <BreadcrumbItem>
         <BreadcrumbLink href="#">Home</BreadcrumbLink>
       </BreadcrumbItem>
