@@ -1,0 +1,103 @@
+* users:
+	username: string,
+	password: string,
+	email: string,
+	name: string,
+	phone: string,
+	address: string,
+	roles: ['user', 'admin', 'editor']
+	loyalty_points: number (điểm tích lũy),
+	date_of_birth: ...,
+	gender: number,
+	registration_date: Date,
+	created_at: ...,
+	updated_at: ...
+
+* tokens: 
+	user_id: -> [users],
+	token: string,
+	created_at: ...,
+	expires_at: ...
+
+* tables: 
+	table_number: string,
+	reservation_id: -> [reservations],
+	capacity: number (sức chứa của bàn),
+	status: emun(['available(trống)', 'occupied(đang sử dụng)', reserved('đặt trước'), unavailable('không khả dụng')])
+	description: text,
+	location: number (vị trí của bàn trong nhà hàng),
+	created_at: ...,
+	updated_at: ...
+
+* reservations: 
+	user_id: -> [users],
+	table_id: -> [tables],
+	eservation_date: ... (Ngày đặt bàn),
+	reservation_time: ... (Thời gian đặt bàn),
+	number_of_guests: number (Số lượng khách),
+	created_at: ... (Ngày tạo đặt bàn),
+	updated_at: ... (Ngày cập nhật đặt bàn),
+
+* categories: 
+	name: string,
+	icon: string,
+	description: string,
+	created_at: ...,
+	updated_at: ...
+
+* dishes: 
+	category_id: -> [categories]
+	name: string,
+	price: number,
+	thunbnail: string,
+	gallery: array,
+	is_available: boolen (check xem có sẵn hay không),
+	created_at: ...,
+	updated_at: ...
+
+* carts:
+	dishes: array,
+	user_id: -> [users],
+	quantity: number,
+	created_at: ...,
+	updated_at: ...
+
+* orders: 
+	user_id: -> [users],
+	cart_id: -> [carts],
+	reservation_id: -> [reservations],
+	quantity: number,
+	order_date: (Ngày đặt hàng),
+	total_amount: number,
+	status: emun['processing', "confirmed", "delivering", "cancelled", "delivered"],
+	payment_status: boolean,
+	created_at: ... (Ngày tạo đơn hàng),
+	updated_at: ... (Ngày cập nhật đơn hàng)
+
+* delivery
+	order_id: -> [orders],
+	delivery_address: (Địa chỉ giao hàng),
+	delivery_date:( Ngày giao hàng dự kiến),
+	delivery_status: (Trạng thái giao hàng),
+	created_at: (Ngày tạo đơn hàng giao hàng),
+	updated_at: (Ngày cập nhật đơn hàng giao hàng),
+
+* payments
+	order_id (khóa ngoại): -> [orders]
+	reservation_id (khóa ngoại): -> [reservations],
+	payment_method: string,
+	amount: number,
+	payment_date: ...,
+	is_successful: boolean,
+	created_at: (Ngày tạo thanh toán),
+	updated_at: (Ngày cập nhật thanh toán),
+
+* promotions(khuyến mãi):
+	name: Tên chương trình khuyến mãi.
+	description: Mô tả chương trình khuyến mãi.
+	start_date: Ngày bắt đầu áp dụng chương trình khuyến mãi.
+	end_date: Ngày kết thúc chương trình khuyến mãi.
+	discount_percentage: Tỷ lệ giảm giá áp dụng.
+	minimum_order_amount: Số tiền đặt hàng tối thiểu để áp dụng chương trình khuyến mãi.
+	created_at: Ngày tạo chương trình khuyến mãi.
+	updated_at: Ngày cập nhật chương trình khuyến mãi.	

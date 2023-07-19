@@ -1,53 +1,58 @@
-import express from "express";
-import { Server } from "socket.io";
-import { createServer } from "http";
-import { kitchenNamespace } from "./socket/namespace/kitchen.js";
-import morgan from "morgan";
-import cors from "cors";
-import dotenv from "dotenv";
-import mongoose from "mongoose";
+import express from "express"
+import dotenv from "dotenv"
+import cors from "cors"
+import { Server } from "socket.io"
+import { createServer } from "http"
+import cookieParser from "cookie-parser";
+import { connect } from "./config/database.config"
+import initRouter from "./router/index.router"
+import createError from "http-errors"
 
-dotenv.config();
+dotenv.config()
 
-const app = express();
-const server = createServer(app);
-const io = new Server(server, {
-  cors: {
-    origin: "*",
-    credentials: true,
-  },
-});
+const app = express()
+const port = process.env.PORT || 4000
+const server = createServer(app)
+const io = new Server(server)
 
-const corsOptions = {
-  origin: true,
-  credentials: true,
-};
 
-app.use(morgan("tiny"));
-app.use(cors(corsOptions));
+// connect db
+connect()
 
-app.get("/", (req, res, next) => {
-  res.send("abc");
-});
-// database connect
-mongoose.set("strictQuery", false);
-const connect = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("mongodb connect successful");
-  } catch (err) {
-    console.log(err);
-  }
-};
+// using middlewares
+app.use(cors({
+	origin: [process.env.FE_URL, process.env.MOMO_URL, "http://localhost:3000"],
+	credentials: true,
+}));
+app.use(cookieParser())
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-export const ioKitchen = io.of("/kitchen.io");
+// init router
+initRouter(app)
 
-ioKitchen.on("connection", kitchenNamespace);
+// middleware handle error
+// router not found
+app.use((req, res, next) => {
+	next(createError.NotFound('not found!'))
+})
 
-server.listen(8080, () => {
-  connect();
-  console.log("http://localhost:8080");
-});
+app.use((err, req, res, next) => {
+	res.status(err.status || 500).json({
+		error: {
+			status: err.status || 500,
+			message: err.message || "internal server",
+		},
+	});
+})
+
+// socket
+io.on("connection", (socket) => {
+	console.log(socket)
+})
+
+// listen
+server.listen(port, () => {
+	console.log(`http://localhost:${port}`)
+})
+
