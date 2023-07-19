@@ -14,6 +14,7 @@ import { HistoryView } from "~/views/History";
 import { LoginView } from "~/views/Login";
 import { RegisterView } from "~/views/Register";
 import { Profile } from "~/views/Profile";
+import { ResetPasswordView } from "~/views/ResetPassword";
 
 const routes: RouteObject[] = [
 	{
@@ -63,6 +64,10 @@ const routes: RouteObject[] = [
 					{
 						path: "register",
 						element: <RegisterView />,
+					},
+					{
+						path: "reset-password",
+						element: <ResetPasswordView />,
 					},
 				],
 			},

@@ -4,9 +4,11 @@ import { Button, Img } from "@chakra-ui/react";
 import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
 import { IconAddCart, IconHeart } from "~/components/Icons";
 
-type Props = {};
+type Props = {
+  handleAddProduct: () => void;
+};
 
-const CardProduct = (props: Props) => {
+const CardProduct = ({ handleAddProduct }: Props) => {
   return (
     <GridItem cursor="pointer" position="relative" minH="300px">
       <Img
@@ -46,7 +48,12 @@ const CardProduct = (props: Props) => {
           </Text>
         </CardBody>
         <CardFooter>
-          <Button variant="outline" rounded="full" bgColor="gray.100">
+          <Button
+            variant="outline"
+            rounded="full"
+            bgColor="gray.100"
+            onClick={handleAddProduct}
+          >
             <Text color="black">$10</Text>
             <IconAddCart boxSize={4} color="black" />
           </Button>
