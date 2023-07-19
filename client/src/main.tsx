@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
-
+import { Provider } from "react-redux";
 // react
 
 // style font
@@ -14,15 +14,15 @@ import "@fontsource/quicksand/700.css";
 // custom them chakra ui
 import customTheme from "~/theme";
 import { ChakraProvider, CSSReset } from "@chakra-ui/react";
+import store from "./store/index.ts";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
-		<ChakraProvider
-			theme={customTheme}
-			resetCSS={true}
-		>
-			<CSSReset />
-			<App />
-		</ChakraProvider>
+		<Provider store={store}>
+			<ChakraProvider theme={customTheme} resetCSS={true}>
+				<CSSReset />
+				<App />
+			</ChakraProvider>
+		</Provider>
 	</React.StrictMode>
 );
