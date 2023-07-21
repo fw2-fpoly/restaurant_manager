@@ -15,70 +15,87 @@ import { LoginView } from "~/views/Login";
 import { RegisterView } from "~/views/Register";
 import { Profile } from "~/views/Profile";
 import { ResetPasswordView } from "~/views/ResetPassword";
+import Manager from "~/views/Manager";
+import Dashboard from "~/views/Manager/Dashboard";
+import ProductManager from "~/views/Manager/ProductManager";
 import KitchenView from "~/views/Kitchen/Kitchen";
 
 const routes: RouteObject[] = [
-  {
-    path: "/",
-    children: [
-      {
-        element: <MainLayout />,
-        children: [
-          {
-            index: true,
-            element: <HomeView />,
-          },
-          {
-            path: "table",
-            element: <TableView />,
-          },
-          {
-            path: "menu",
-            element: <MenuView />,
-          },
-          {
-            path: "orders",
-            element: <OrderView />,
-          },
-          {
-            path: "profile",
-            element: <Profile />,
-          },
-          {
-            path: "history",
-            element: <HistoryView />,
-          },
-          {
-            path: "kitchen",
-            element: <KitchenView />,
-          },
-
-          {
-            path: "*",
-            element: <NotFoundView />,
-          },
-        ],
-      },
-      {
-        path: "*",
-        element: <AuthLayout />,
-        children: [
-          {
-            path: "login",
-            element: <LoginView />,
-          },
-          {
-            path: "register",
-            element: <RegisterView />,
-          },
-          {
-            path: "reset-password",
-            element: <ResetPasswordView />,
-          },
-        ],
-      },
-    ],
-  },
+	{
+		path: "/",
+		children: [
+			{
+				element: <MainLayout />,
+				children: [
+					{
+						index: true,
+						element: <HomeView />,
+					},
+					{
+						path: "table",
+						element: <TableView />,
+					},
+					{
+						path: "menu",
+						element: <MenuView />,
+					},
+					{
+						path: "orders",
+						element: <OrderView />,
+					},
+					{
+						path: "profile",
+						element: <Profile />,
+					},
+					{
+						path: "history",
+						element: <HistoryView />,
+					},
+					{
+						path: "kitchen",
+						element: <KitchenView />,
+					},
+					{
+						path: "manager",
+						element: <Manager />,
+						children: [
+							{
+								index: true,
+								path: "dashboard",
+								element: <Dashboard />,
+							},
+							{
+								path: "products",
+								element: <ProductManager />,
+							},
+						],
+					},
+					{
+						path: "*",
+						element: <NotFoundView />,
+					},
+				],
+			},
+			{
+				path: "*",
+				element: <AuthLayout />,
+				children: [
+					{
+						path: "login",
+						element: <LoginView />,
+					},
+					{
+						path: "register",
+						element: <RegisterView />,
+					},
+					{
+						path: "reset-password",
+						element: <ResetPasswordView />,
+					},
+				],
+			},
+		],
+	},
 ];
 
 export default routes;
