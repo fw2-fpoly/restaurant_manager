@@ -15,7 +15,7 @@ import {
 import React from "react";
 
 type Props = {
-  orderDetail?: any;
+  orderDetail: any;
   isOpen: boolean;
   onClose: () => void;
 };
@@ -40,7 +40,7 @@ const OrderDetailModal = ({
                 <Text fontWeight={700}>Số lượng</Text>
               </Flex>
             </ListItem>
-            {orderDetail.items.map((item) => (
+            {orderDetail.items?.map((item: any) => (
               <ListItem>
                 <Flex justifyContent="space-between">
                   <p>{item.name ?? "Tên món"}</p>
