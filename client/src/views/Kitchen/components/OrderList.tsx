@@ -33,7 +33,7 @@ type OrderType = {
 const OrderList = ({ filter, ...props }: Props) => {
   const [showedOrders, setShowedOrders] = useState<OrderType[]>([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const [selectedOrder, setSelectedOrder] = useState<OrderType>({});
   useEffect(() => {
     if (!filter) {
       setShowedOrders(orders);
@@ -44,6 +44,11 @@ const OrderList = ({ filter, ...props }: Props) => {
 
   return (
     <>
+      <OrderDetailModal
+        isOpen={isOpen}
+        onClose={onClose}
+        orderDetail={selectedOrder}
+      />
       <TableContainer mt={4} rounded={8}>
         <Table size="md" variant="simple" textAlign="center">
           <Thead background="gray.100" rounded="8px">
@@ -112,7 +117,13 @@ const OrderList = ({ filter, ...props }: Props) => {
                     </Menu>
                   </Td>
                   <Td>
-                    <Button bg="primary.200" onClick={onOpen}>
+                    <Button
+                      bg="primary.200"
+                      onClick={() => {
+                        onOpen();
+                        setSelectedOrder(order);
+                      }}
+                    >
                       Chi tiết
                     </Button>
                   </Td>

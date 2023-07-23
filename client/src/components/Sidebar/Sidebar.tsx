@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { NavLink, Link as ReactLink } from "react-router-dom";
 import { Button, Img } from "@chakra-ui/react";
 import { Box, Flex, Center, Text, Link } from "@chakra-ui/layout";
+
 import { LogoIcon, HomeIcon, BellIcon, CartIcon, MenuIcon, SettingIcon, TableIcon, UserIcon } from "../Icons";
 
 type Props = {};
 
 interface ILinks {
-	title: string;
-	path: string;
-	icon: any;
+  title: string;
+  path: string;
+  icon: any;
 }
 
 const links: ILinks[] = [
+
 	{
 		title: "Trang Chủ",
 		path: "/",

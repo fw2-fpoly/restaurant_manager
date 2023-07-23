@@ -15,6 +15,7 @@ import { LoginView } from "~/views/Login";
 import { RegisterView } from "~/views/Register";
 import { Profile } from "~/views/Profile";
 import { ResetPasswordView } from "~/views/ResetPassword";
+
 import Manager from "~/views/Manager";
 import Dashboard from "~/views/Manager/Dashboard";
 import ProductManager from "~/views/Manager/ProductManager";
