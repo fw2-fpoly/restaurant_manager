@@ -15,7 +15,7 @@ import {
 import React from "react";
 
 type Props = {
-  orderDetail: any;
+  orderDetail?: any;
   isOpen: boolean;
   onClose: () => void;
 };

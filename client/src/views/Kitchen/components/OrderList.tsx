@@ -34,7 +34,6 @@ const OrderList = ({ filter, ...props }: Props) => {
   const [showedOrders, setShowedOrders] = useState<OrderType[]>([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedOrder, setSelectedOrder] = useState<OrderType>({});
-
   useEffect(() => {
     if (!filter) {
       setShowedOrders(orders);
@@ -73,6 +72,11 @@ const OrderList = ({ filter, ...props }: Props) => {
           <Tbody>
             {showedOrders.map((order) => (
               <>
+                <OrderDetailModal
+                  isOpen={isOpen}
+                  onClose={onClose}
+                  orderDetail={order}
+                />
                 <Tr
                   bg={
                     order.status == "processing"
