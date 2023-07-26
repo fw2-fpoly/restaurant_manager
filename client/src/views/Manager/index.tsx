@@ -22,12 +22,12 @@ const links: ILinks[] = [
 	},
 	{
 		title: "Quản lí danh mục",
-		path: "",
+		path: "/manager/cates",
 		icon: CateIcon,
 	},
 	{
 		title: "Quản lí nhân viên",
-		path: "/",
+		path: "/manager/staff",
 		icon: UserIcon,
 	},
 ];
