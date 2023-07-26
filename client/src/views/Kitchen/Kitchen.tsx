@@ -6,14 +6,22 @@ import OrderList from "./components/OrderList";
 type Props = {};
 
 const KitchenView = (props: Props) => {
-  const [filter, setFilter] = useState("");
+	const [filter, setFilter] = useState("");
 
-  return (
-    <Box rounded="8px" bg="#fff" p="16px">
-      <FilterGroup filter={filter} setFilter={setFilter} />
-      <OrderList filter={filter} />
-    </Box>
-  );
+	return (
+		<Box
+			rounded="sm"
+			bg="#fff"
+			p={6}
+			mt={8}
+		>
+			<FilterGroup
+				filter={filter}
+				setFilter={setFilter}
+			/>
+			<OrderList filter={filter} />
+		</Box>
+	);
 };
 
 export default KitchenView;

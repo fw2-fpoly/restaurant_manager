@@ -34,10 +34,21 @@ const links: ILinks[] = [
 
 const Manager = (props: Props) => {
 	return (
-		<Grid w="full" templateColumns="repeat(12, 1fr)" gap="6" h={"full"}>
+		<Grid
+			templateColumns="repeat(12, 1fr)"
+			gap="6"
+			mt="8"
+			mx="3"
+			h="100vh"
+		>
 			{/* Box 1 */}
 			<GridItem colSpan={3}>
-				<Box h={"full"} p={5} mx={5} bgColor={"white"}>
+				<Box
+					h="full"
+					p={6}
+					bgColor="white"
+					rounded="sm"
+				>
 					<Img
 						borderRadius="full"
 						boxSize="160px"
@@ -47,13 +58,25 @@ const Manager = (props: Props) => {
 						my="auto"
 						src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-gai-xinh-Viet-Nam.jpg"
 					/>
-					<Stack mt="6" spacing="3">
-						<Heading size="md" mx="auto">
+					<Stack
+						mt="6"
+						spacing="3"
+					>
+						<Heading
+							size="md"
+							mx="auto"
+						>
 							Rose Sadan
 						</Heading>
-						<Text mx="auto">Quản lí</Text>
+						<Text
+							mx="auto"
+							fontSize="sm"
+							fontWeight="semibold"
+						>
+							Quản lí
+						</Text>
 
-						<div>
+						<Box mt={4}>
 							{links?.map((link: ILinks, index: number) => {
 								const Icon = link.icon;
 								return (
@@ -114,14 +137,17 @@ const Manager = (props: Props) => {
 									</Link>
 								);
 							})}
-						</div>
+						</Box>
 					</Stack>
 				</Box>
 			</GridItem>
 
 			{/* Box 2 */}
 			<GridItem colSpan={9}>
-				<Box p={8} bgColor={"white"}>
+				<Box
+					p={8}
+					bgColor={"white"}
+				>
 					<Outlet />
 				</Box>
 			</GridItem>
