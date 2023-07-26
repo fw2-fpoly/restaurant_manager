@@ -7,10 +7,10 @@ import { MoreIcon } from "~/components/Icons";
 import { useNavigate } from "react-router";
 
 type Props = {};
-const TableProducts = (props: Props) => {
+const TableStaffs = (props: Props) => {
 	const navigate = useNavigate();
-	const editproduct = () => {
-		navigate("/manager/products/edit/1");
+	const editStaff = () => {
+		navigate("/manager/staff/edit/1");
 	};
 	return (
 		<>
@@ -22,16 +22,14 @@ const TableProducts = (props: Props) => {
 								Id
 							</Th>
 							<Th fontSize="md" fontWeight="bold">
-								Tên món
+								Tên Nhân Viên
 							</Th>
 							<Th fontSize="md" fontWeight="bold">
 								Ảnh
 							</Th>
+
 							<Th fontSize="md" fontWeight="bold">
-								Giá
-							</Th>
-							<Th fontSize="md" fontWeight="bold">
-								Thời Gian
+								Chức Vụ
 							</Th>
 							<Th fontSize="md" fontWeight="bold">
 								Action
@@ -61,7 +59,7 @@ const TableProducts = (props: Props) => {
 									/>
 									<MenuList>
 										<MenuItem>Delete</MenuItem>
-										<MenuItem onClick={() => editproduct()}>Update</MenuItem>
+										<MenuItem onClick={() => editStaff()}>Update</MenuItem>
 									</MenuList>
 								</Menu>
 							</Td>
@@ -73,4 +71,4 @@ const TableProducts = (props: Props) => {
 	);
 };
 
-export default TableProducts;
+export default TableStaffs;

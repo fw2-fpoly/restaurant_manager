@@ -20,32 +20,37 @@ import {
 import { joiResolver } from "@hookform/resolvers/joi";
 import Joi from "joi";
 import { useForm } from "react-hook-form";
-const productSchema = Joi.object({
-	productname: Joi.string().trim().required().messages({
-		"string.empty": "Tên sản phẩm không được để trống",
+const staffSchema = Joi.object({
+	staffname: Joi.string().trim().required().messages({
+		"string.empty": "Tên nhân viên không được để trống",
 		"any.required": "Trường tên sản phẩm là bắt buộc",
-	}),
-	estime: Joi.string().trim().required().messages({
-		"string.empty": "estime không được để trống",
-		"any.required": "Trường estime là bắt buộc",
-	}),
-	price: Joi.string().trim().required().messages({
-		"string.empty": "Giá không được để trống",
-		"any.required": "Trường Giá là bắt buộc",
-		"any.number": "Phải là số",
 	}),
 	images: Joi.required().messages({
 		"any.required": "Trường Ảnh là bắt buộc",
 	}),
+	email: Joi.string()
+		.email({ tlds: { allow: false } })
+		.required()
+		.trim()
+		.messages({
+			"string.email": "Email không hợp lệ",
+			"string.empty": "Không được để trống",
+			"any.required": "Trường này bắt buộc phải nhập",
+		}),
+	password: Joi.string().min(6).required().trim().messages({
+		"string.empty": "Không được để trống",
+		"any.required": "Trường này bắt buộc phải nhập",
+		"string.min": "Tối thiểu 6 ký tự",
+	}),
 });
-const Addproduct = () => {
+const AddStaff = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm<any>({
-		resolver: joiResolver(productSchema),
+		resolver: joiResolver(staffSchema),
 	});
 
 	const onSubmit = async (data: any) => {
@@ -60,7 +65,7 @@ const Addproduct = () => {
 			<Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
 				<ModalContent>
-					<ModalHeader>Thêm mới sản phẩm</ModalHeader>
+					<ModalHeader>Thêm mới nhân viên</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody pb={6}>
 						<form
@@ -71,56 +76,51 @@ const Addproduct = () => {
 						>
 							<Flex direction={"column"} gap={4}>
 								<Flex direction="row" gap={4}>
-									<FormControl flex={1} isInvalid={errors.productname as any}>
-										<FormLabel>Tên sản phẩm</FormLabel>
+									<FormControl flex={1} isInvalid={errors.staffname as any}>
+										<FormLabel>Tên Nhân Viên</FormLabel>
 										<Input
-											id="productname"
+											id="staffname"
 											type="firstname"
-											placeholder="Tên sản phẩm"
+											placeholder="Tên Nhân Viên"
 											size="lager"
-											{...register("productname")}
+											{...register("staffname")}
 										/>
 										<FormErrorMessage>
-											{(errors.productname as any) && (errors?.productname?.message as any)}
-										</FormErrorMessage>
-									</FormControl>
-									<FormControl flex={1} isInvalid={errors.price as any}>
-										<FormLabel>price</FormLabel>
-										<Input
-											id="price"
-											type="number"
-											placeholder="Giá món ăn"
-											size="lager"
-											{...register("price")}
-										/>
-										<FormErrorMessage>
-											{(errors.price as any) && (errors?.price?.message as any)}
+											{(errors.staffname as any) && (errors?.staffname?.message as any)}
 										</FormErrorMessage>
 									</FormControl>
 								</Flex>
-
-								<FormControl flex={1} isInvalid={errors.estime as any}>
-									<FormLabel>Estime</FormLabel>
+								<FormControl isInvalid={errors.email as any}>
 									<Input
-										id="estime"
-										type="number"
-										placeholder="Thời gian món ăn"
+										id="email"
+										type="email"
+										placeholder="Email"
 										size="lager"
-										{...register("estime")}
+										{...register("email")}
 									/>
 									<FormErrorMessage>
-										{(errors.estime as any) && (errors?.estime?.message as any)}
+										{(errors.email as any) && (errors?.email?.message as any)}
 									</FormErrorMessage>
 								</FormControl>
-
+								<FormControl isInvalid={errors.password as any}>
+									<Input
+										id="password"
+										type="password"
+										placeholder="Mật Khẩu"
+										size="lager"
+										{...register("password")}
+									/>
+									<FormErrorMessage>
+										{(errors.password as any) && (errors?.password?.message as any)}
+									</FormErrorMessage>
+								</FormControl>
 								<FormControl flex={1} isInvalid={errors.images as any}>
-									<FormLabel>Images</FormLabel>
+									<FormLabel>Image</FormLabel>
 									<Input
 										id="images"
 										type="file"
 										placeholder="images"
 										size="lager"
-										multiple
 										{...register("images")}
 									/>
 									<FormErrorMessage>
@@ -149,4 +149,4 @@ const Addproduct = () => {
 		</>
 	);
 };
-export default Addproduct;
+export default AddStaff;
