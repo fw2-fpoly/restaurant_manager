@@ -1,20 +1,17 @@
-import React, { useState } from "react";
-import { NavLink, Link as ReactLink } from "react-router-dom";
-import { Button, Img } from "@chakra-ui/react";
-import { Box, Flex, Center, Text, Link } from "@chakra-ui/layout";
-
-import { LogoIcon, HomeIcon, BellIcon, CartIcon, MenuIcon, SettingIcon, TableIcon, UserIcon } from "../Icons";
+import { Box, Center, Flex, Link } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
+import { BellIcon, CartIcon, HomeIcon, LogoIcon, MenuIcon, TableIcon, UserIcon, KitchenIcon } from "~/components/Icons";
 
 type Props = {};
 
 interface ILinks {
-  title: string;
-  path: string;
-  icon: any;
+	title: string;
+	path: string;
+	icon: any;
 }
 
 const links: ILinks[] = [
-
 	{
 		title: "Trang Chủ",
 		path: "/",
@@ -43,7 +40,7 @@ const links: ILinks[] = [
 	{
 		title: "Nhà bếp",
 		path: "/kitchen",
-		icon: BellIcon,
+		icon: KitchenIcon,
 	},
 	{
 		title: "Quản lí",
@@ -54,13 +51,26 @@ const links: ILinks[] = [
 
 const Sidebar = (props: Props) => {
 	return (
-		<Flex w="full" h="full" gap={8} direction="column">
+		<Flex
+			w="full"
+			h="full"
+			gap={8}
+			direction="column"
+		>
 			<Center>
 				<Box>
-					<LogoIcon boxSize={10} color="primary.font" />
+					<LogoIcon
+						boxSize={12}
+						color="primary.font"
+					/>
 				</Box>
 			</Center>
-			<Flex flex={1} direction="column" align="center" gap={4}>
+			<Flex
+				flex={1}
+				direction="column"
+				align="center"
+				gap={4}
+			>
 				{links?.map((link: ILinks, index: number) => {
 					const Icon = link.icon;
 					return (
@@ -91,7 +101,7 @@ const Sidebar = (props: Props) => {
 								w="full"
 								size="lager"
 								color="text.300"
-								fontSize="xs"
+								fontSize="sm"
 								fontWeight="semibold"
 								textDecoration="none"
 								bgColor="white"
@@ -123,17 +133,6 @@ const Sidebar = (props: Props) => {
 					);
 				})}
 			</Flex>
-			<Center>
-				<Link as={ReactLink} to="/profile">
-					<Img
-						borderRadius="full"
-						boxSize="54px"
-						objectFit="cover"
-						objectPosition="top"
-						src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-gai-xinh-Viet-Nam.jpg"
-					/>
-				</Link>
-			</Center>
 		</Flex>
 	);
 };
