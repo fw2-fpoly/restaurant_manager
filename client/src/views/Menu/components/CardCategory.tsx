@@ -18,7 +18,7 @@ const CardCategory = ({ category }: Props) => {
       _hover={{ bg: "primary.100", color: "white" }}
     >
       <Image />
-      <Text>{category.title}</Text>
+      <Text>{category.name}</Text>
     </Button>
   );
 };

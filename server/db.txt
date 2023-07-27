@@ -1,12 +1,13 @@
 * users:
-	username: string,
+	first_name: string,
+	last_name: string,
 	password: string,
 	email: string,
 	name: string,
 	phone: string,
 	address: string,
-	roles: ['user', 'admin', 'editor']
-	loyalty_points: number (điểm tích lũy),
+	image:string,
+	roles: ['user', 'admin', 'editor'],
 	date_of_birth: ...,
 	gender: number,
 	registration_date: Date,
@@ -20,8 +21,9 @@
 	expires_at: ...
 
 * tables: 
-	table_number: string,
-	reservation_id: -> [reservations],
+	table_id:
+	table_number: number,
+	order_id:[]
 	capacity: number (sức chứa của bàn),
 	status: emun(['available(trống)', 'occupied(đang sử dụng)', reserved('đặt trước'), unavailable('không khả dụng')])
 	description: text,
@@ -29,58 +31,48 @@
 	created_at: ...,
 	updated_at: ...
 
-* reservations: 
-	user_id: -> [users],
-	table_id: -> [tables],
-	eservation_date: ... (Ngày đặt bàn),
-	reservation_time: ... (Thời gian đặt bàn),
-	number_of_guests: number (Số lượng khách),
-	created_at: ... (Ngày tạo đặt bàn),
-	updated_at: ... (Ngày cập nhật đặt bàn),
-
 * categories: 
+	category_id
 	name: string,
 	icon: string,
+	foods:[food_id],
 	description: string,
 	created_at: ...,
 	updated_at: ...
 
-* dishes: 
-	category_id: -> [categories]
+* foods: 
+	category_id: -> string
 	name: string,
 	price: number,
-	thunbnail: string,
-	gallery: array,
+	estime,
+	image: string,
+	images: array,
 	is_available: boolen (check xem có sẵn hay không),
 	created_at: ...,
 	updated_at: ...
 
-* carts:
-	dishes: array,
-	user_id: -> [users],
+* order_detail:
+	orderdetail_id:string
+	food_id :object id[]
 	quantity: number,
+	price:number
+	desc:string
 	created_at: ...,
 	updated_at: ...
 
 * orders: 
 	user_id: -> [users],
-	cart_id: -> [carts],
-	reservation_id: -> [reservations],
+	orderdetail: -> [orderdetail_id],
 	quantity: number,
+	table_id,
 	order_date: (Ngày đặt hàng),
 	total_amount: number,
+	estime_total,
+	isTakenAway: true|false,
 	status: emun['processing', "confirmed", "delivering", "cancelled", "delivered"],
 	payment_status: boolean,
 	created_at: ... (Ngày tạo đơn hàng),
 	updated_at: ... (Ngày cập nhật đơn hàng)
-
-* delivery
-	order_id: -> [orders],
-	delivery_address: (Địa chỉ giao hàng),
-	delivery_date:( Ngày giao hàng dự kiến),
-	delivery_status: (Trạng thái giao hàng),
-	created_at: (Ngày tạo đơn hàng giao hàng),
-	updated_at: (Ngày cập nhật đơn hàng giao hàng),
 
 * payments
 	order_id (khóa ngoại): -> [orders]

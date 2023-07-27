@@ -1,14 +1,16 @@
 import React from "react";
-import { Flex, GridItem, Heading, Spacer, Text } from "@chakra-ui/layout";
+import { Flex, GridItem, Spacer, Text } from "@chakra-ui/layout";
 import { Button, Img } from "@chakra-ui/react";
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
+import { Card, CardBody, CardFooter } from "@chakra-ui/react";
 import { IconAddCart, IconHeart } from "~/components/Icons";
+import { IProduct } from "~/interface/products";
 
 type Props = {
-  handleAddProduct: () => void;
+  handleAddProduct: (item:IProduct) => void;
+  item:IProduct
 };
 
-const CardProduct = ({ handleAddProduct }: Props) => {
+const CardProduct = ({ handleAddProduct,item }: Props) => {
   return (
     <GridItem cursor="pointer" position="relative" minH="300px">
       <Img
@@ -18,7 +20,7 @@ const CardProduct = ({ handleAddProduct }: Props) => {
         borderRadius="lg"
         objectFit="cover"
         h="100%"
-        src="https://a.cdn-hotels.com/gdcs/production0/d1513/35c1c89e-408c-4449-9abe-f109068f40c0.jpg?impolicy=fcrop&w=800&h=533&q=medium"
+        src={item.image}
         alt=""
       />
       <Card
@@ -44,7 +46,7 @@ const CardProduct = ({ handleAddProduct }: Props) => {
         </Flex>
         <CardBody>
           <Text color="text.100" fontSize="20px">
-            Mon an 1
+            {item.name}
           </Text>
         </CardBody>
         <CardFooter>
@@ -52,9 +54,9 @@ const CardProduct = ({ handleAddProduct }: Props) => {
             variant="outline"
             rounded="full"
             bgColor="gray.100"
-            onClick={handleAddProduct}
+            onClick={()=>handleAddProduct(item)}
           >
-            <Text color="black">$10</Text>
+            <Text color="black">${item.price}</Text>
             <IconAddCart boxSize={4} color="black" />
           </Button>
         </CardFooter>

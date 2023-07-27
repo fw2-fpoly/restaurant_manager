@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Flex,
@@ -9,13 +9,28 @@ import {
   VStack,
   Center,
 } from "@chakra-ui/layout";
-import { Button, Image, IconButton, Radio } from "@chakra-ui/react";
+import {
+  Button,
+  Image,
+  IconButton,
+  Radio,
+  useRadioGroup,
+} from "@chakra-ui/react";
 import {
   IconCash,
   IconQrCode,
   LogoIcon,
+  TableForIcon,
+  TableSixIcon,
+  TableTwoIcon,
   WalletIcon,
 } from "../../../components/Icons";
+import { useSelector, useDispatch } from "react-redux";
+
+import { table } from "~/utils/data";
+import { IProduct } from "~/interface/products";
+import { IBill } from "~/interface/order";
+import RadioCard from "./PayMent";
 type Props = {};
 
 const payments = [
@@ -37,6 +52,18 @@ const payments = [
 ];
 
 const OrderDetail = (props: Props) => {
+  const { cart } = useSelector((state: any) => state.cart);
+
+  const [selected, setSelected] = useState("");
+
+  const handleChange = (value: any) => {
+    setSelected(value);
+  };
+
+  const { getRadioProps, getRootProps } = useRadioGroup({
+    onChange: handleChange,
+  });
+
   return (
     <Box
       w="100%"
@@ -76,46 +103,49 @@ const OrderDetail = (props: Props) => {
             Take away
           </Button>
         </Flex>
-        <Box marginTop="10px" overflowY="auto" h="80%">
-          <HStack
-            alignItems="flex-start"
-            paddingY="14px"
-            borderBottom="1px solid  rgb(228 228 231)"
-          >
-            <Box
-              width="20%"
-              borderRadius="16px"
-              overflow="hidden"
-              marginTop="6px"
-            >
-              <Image
-                src="https://i.pinimg.com/originals/60/10/4a/60104a06b2c5da9e7ab683b3d6cfdd15.jpg"
-                alt="Anh do an"
-              ></Image>
-            </Box>
-            <Box width="80%">
-              <Text fontSize="md" fontWeight="800">
-                Orange Juice
-              </Text>
-              <Text fontSize="xs" mt="2px" color="#b4b4b4">
-                Note: Less ice
-              </Text>
-              <Text fontSize="xs" mt="2px" color="#b4b4b4">
-                Extras: Extra Mazaredo
-              </Text>
-              <Flex justifyContent="space-between" marginTop="10px">
-                <HStack>
-                  <Text fontSize="sm" color="rgb(113 113 122)">
-                    $2,87
+        <Box marginTop="10px" overflowY="scroll" maxH="400px">
+          {cart?.map((item: IBill) => {
+            return (
+              <HStack
+                alignItems="flex-start"
+                paddingY="14px"
+                borderBottom="1px solid  rgb(228 228 231)"
+              >
+                <Box
+                  width="20%"
+                  borderRadius="16px"
+                  overflow="hidden"
+                  marginTop="6px"
+                >
+                  <Image
+                    src={item.foods.image}
+                    alt="Anh do an"
+                    width="100%"
+                    height="80px"
+                  ></Image>
+                </Box>
+                <Box width="80%">
+                  <Text fontSize="md" fontWeight="800">
+                    {item.foods.name}
                   </Text>
-                  <Text fontSize="xs" color="#b4b4b4">
-                    x4
+                  <Text fontSize="xs" mt="2px" color="#b4b4b4">
+                    Note: {item.description}
                   </Text>
-                </HStack>
-                <Text fontSize="sm">$11,48</Text>
-              </Flex>
-            </Box>
-          </HStack>
+                  <Flex justifyContent="space-between" marginTop="10px">
+                    <HStack>
+                      <Text fontSize="sm" color="rgb(113 113 122)">
+                        ${item.foods.price}
+                      </Text>
+                      <Text fontSize="xs" color="#b4b4b4">
+                        x{item.quantity}
+                      </Text>
+                    </HStack>
+                    <Text fontSize="sm">${item.totalMoney}</Text>
+                  </Flex>
+                </Box>
+              </HStack>
+            );
+          })}
         </Box>
       </Box>
 
@@ -142,18 +172,19 @@ const OrderDetail = (props: Props) => {
         </Flex>
         <Box>
           <Text fontSize="lg" my="4">
-            Available table
+            Available table : T2
           </Text>
-          <Grid gap={2} templateColumns="repeat(3, 1fr)">
-            {payments.map((item) => {
+          <Grid gap={2} templateColumns="repeat(5, 1fr)">
+            {table.map((item) => {
               return (
-                <GridItem key={item.id}>
+                <GridItem key={item._id}>
                   <Button
                     w="100%"
                     h="auto"
                     color="text.300"
-                    bgColor="gray.100"
+                    bgColor="none"
                     rounded="lg"
+                    _hover={{ bgColor: "gray.100" }}
                     px={2}
                     py={4}
                     display="flex"
@@ -161,50 +192,39 @@ const OrderDetail = (props: Props) => {
                   >
                     <IconButton
                       aria-label="payment"
-                      icon={item.icon}
+                      icon={
+                        item.capacity === 2 ? (
+                          <TableTwoIcon size={12} />
+                        ) : item.capacity === 4 ? (
+                          <TableForIcon size={12} />
+                        ) : (
+                          <TableSixIcon size={12} />
+                        )
+                      }
                       background="none"
-                      color="black"
+                      color={
+                        item.status === "available" ? "green.400" : "gray.100"
+                      }
                     />
-                    <Text color="green">{item.name}</Text>
+                    <Text color="green">T{item.table_number}</Text>
                   </Button>
-                  <Radio value="1" visibility="hidden">
-                    First
-                  </Radio>
                 </GridItem>
               );
             })}
           </Grid>
         </Box>
-        <Box>
+        <Box {...getRootProps()}>
           <Text fontSize="lg" my="4">
-            Payment Methods
+            Payment Methods: {selected}
           </Text>
           <Grid gap={2} templateColumns="repeat(3, 1fr)">
             {payments.map((item) => {
               return (
                 <GridItem key={item.id}>
-                  <Button
-                    w="100%"
-                    h="auto"
-                    color="text.300"
-                    bgColor="gray.100"
-                    rounded="lg"
-                    px={2}
-                    py={4}
-                    display="flex"
-                    flexDirection="column"
-                  >
-                    <IconButton
-                      aria-label="payment"
-                      icon={item.icon}
-                      background="none"
-                      color="black"
-                    />
-                    <Text color="green">{item.name}</Text>
-                  </Button>
-                  <Radio value="1" visibility="hidden">
-                    First
-                  </Radio>
+                  <RadioCard
+                    item={item}
+                    {...getRadioProps({ value: item.name })}
+                  />
                 </GridItem>
               );
             })}
