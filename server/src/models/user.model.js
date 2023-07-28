@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose'
+import bcryptjs from "bcryptjs"
 
 const userSchema = new Schema({
 	first_name: {
@@ -52,8 +53,28 @@ const userSchema = new Schema({
 	}
 }, {
 	collection: "users",
-	timestamps: false
+	timestamps: false,
+	versionKey: false
 })
 
+userSchema.pre("save", async function (next) {
+	try {
+		const hashPassword = await bcryptjs.hash(this.password, 10);
+		this.password = hashPassword;
+		next();
+	} catch (error) {
+		next(error)
+	}
+});
+
+userSchema.pre("updateOne", async function (next) {
+	try {
+		const hashPassword = await bcryptjs.hash(this.getUpdate().$set.password, 10);
+		this.getUpdate().$set.password = hashPassword;
+		next();
+	} catch (error) {
+		next(error)
+	}
+});
 
 export default model("User", userSchema)
