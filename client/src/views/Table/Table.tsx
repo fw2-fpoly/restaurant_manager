@@ -11,7 +11,6 @@ const TableView = (props: Props) => {
 	const [open, setOpen] = useState<boolean>(false);
 
 	const handleOpenDetailTable = (id: string | any) => {
-		console.log(id);
 		setOpen(true);
 	};
 	const handleCloseDetailTable = () => {
@@ -62,19 +61,11 @@ const TableView = (props: Props) => {
 						alignItems="center"
 						justifyContent="center"
 					>
-						<IconButton
-							aria-label="status"
-							bgColor="yellow"
-							border="1px"
-							w={5}
-							h={5}
-							rounded="full"
-						/>
 						<Text
 							mx={2}
 							fontSize="sm"
 						>
-							Chờ
+							Trạng thái
 						</Text>
 					</GridItem>
 					<GridItem
@@ -105,26 +96,6 @@ const TableView = (props: Props) => {
 						<IconButton
 							aria-label="status"
 							bgColor="#37b24d"
-							border="1px"
-							w={5}
-							h={5}
-							rounded="full"
-						/>
-						<Text
-							mx={2}
-							fontSize="sm"
-						>
-							Trống
-						</Text>
-					</GridItem>
-					<GridItem
-						display="flex"
-						alignItems="center"
-						justifyContent="center"
-					>
-						<IconButton
-							aria-label="status"
-							bgColor="red"
 							border="1px"
 							w={5}
 							h={5}

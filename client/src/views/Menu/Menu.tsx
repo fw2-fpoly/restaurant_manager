@@ -23,12 +23,12 @@ const MenuView = (props: Props) => {
       <GridItem width={"full"} colSpan={isOpen ? 7 : 5} my={4}>
         <Grid templateColumns="repeat(2,1fr)" gap={4}>
           <GridItem>
-            <Text>Lọc sản phẩm</Text>
+            <Text my={4}>Lọc sản phẩm</Text>
             <Filter />
           </GridItem>
           <GridItem>
-            <Text>Tìm kiếm sản phâm</Text>
-            <Flex my={4}>
+            <Text my={4}>Tìm kiếm sản phâm</Text>
+            <Flex>
               <SearchBar />
             </Flex>
           </GridItem>
@@ -46,8 +46,8 @@ const MenuView = (props: Props) => {
             Danh sách sản phẩm
           </Box>
           <Grid templateColumns="repeat(5,1fr)" gap={4}>
-            {[].map((item) => {
-              return <CardProduct handleAddProduct={handleAddProduct}/>;
+            {[2].map((item) => {
+              return <CardProduct handleAddProduct={handleAddProduct} />;
             })}
           </Grid>
         </Box>
