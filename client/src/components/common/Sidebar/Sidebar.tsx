@@ -6,9 +6,9 @@ import { BellIcon, CartIcon, HomeIcon, LogoIcon, MenuIcon, TableIcon, UserIcon, 
 type Props = {};
 
 interface ILinks {
-	title: string;
-	path: string;
-	icon: any;
+  title: string;
+  path: string;
+  icon: any;
 }
 
 const links: ILinks[] = [

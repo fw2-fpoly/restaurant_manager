@@ -12,12 +12,11 @@ const initialState: CounterState = {
 }
 
 const cartSlice = createSlice({
-	name: "counter",
+	name: "cart",
 	initialState,
 	reducers: {
 		addCart: (state, action) => {
-			console.log(action);
-
+			state.cart.push(action.payload)
 		},
 		updateCart: (state, action) => {
 			console.log(action);

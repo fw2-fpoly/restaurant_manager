@@ -16,7 +16,6 @@ import {
 	Code,
 } from "@chakra-ui/react";
 import { MoreIcon } from "~/components/Icons";
-import { orders } from "../fake-data";
 import { useEffect, useState } from "react";
 import OrderDetailModal from "./OrderDetailModal";
 
@@ -35,13 +34,13 @@ const OrderList = ({ filter, ...props }: Props) => {
 	const [showedOrders, setShowedOrders] = useState<OrderType[]>([]);
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const [selectedOrder, setSelectedOrder] = useState<OrderType>({});
-	useEffect(() => {
-		if (!filter) {
-			setShowedOrders(orders);
-			return;
-		}
-		setShowedOrders(orders?.filter((o) => o.status == filter));
-	}, [filter]);
+	// useEffect(() => {
+	// 	if (!filter) {
+	// 		setShowedOrders(orders);
+	// 		return;
+	// 	}
+	// 	setShowedOrders(orders?.filter((o) => o.status == filter));
+	// }, [filter]);
 
 	return (
 		<>

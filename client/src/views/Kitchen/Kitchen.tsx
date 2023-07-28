@@ -1,5 +1,6 @@
-import { Box } from "@chakra-ui/layout";
-import React, { useState } from "react";
+import { Box, Flex, Grid, GridItem, Text, Spacer } from "@chakra-ui/layout";
+import { Button, Image } from "@chakra-ui/react";
+import { useState } from "react";
 import FilterGroup from "./components/FilterGroup";
 import OrderList from "./components/OrderList";
 

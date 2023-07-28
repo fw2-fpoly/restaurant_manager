@@ -1,4 +1,5 @@
 import { ICategory, IProduct } from "~/interface/products";
+import { ITable, Status } from "~/interface/table";
 
 export const products: IProduct[] = [
 	{
