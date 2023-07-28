@@ -1,40 +1,133 @@
-import { Box, Flex, Grid, GridItem, Text, Spacer } from "@chakra-ui/layout";
-import { Button, Image } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem } from "@chakra-ui/layout";
+import { Button } from "@chakra-ui/react";
 import CardOrder from "./components/CardOrder";
-import DetailOrder from "./components/DetailOrder";
+import { OrderCard } from "~/components/OrderCard";
 
 type Props = {};
 
-const OrderView = (props: Props) => {
-  return (
-    <Box my={10}>
-      <Box my={4}>
-        <Flex gap={4}>
-          <Button bgColor="#ff666d1a" color="primary.100" rounded="lg">
-            On-process
-          </Button>
+const status = [
+	{
+		title: "Tất cả",
+		color: "#0abb87",
+		background: "#0abb871a",
+	},
+	{
+		title: "Đang xử lý",
+		color: "#ffe066",
+		background: "#ffe0661a",
+	},
+	{
+		title: "Đã xác nhận",
+		color: "#0abb87",
+		background: "#0abb871a",
+	},
+	{
+		title: "Đang vận chuyển",
+		color: "#0abb87",
+		background: "#0abb871a",
+	},
+	{
+		title: "Đã hủy",
+		color: "#fe3464",
+		background: "#fe34641a",
+	},
+	{
+		title: "Hoàn thành",
+		color: "#0abb87",
+		background: "#0abb871a",
+	},
+];
 
-          <Button color="text.300" bgColor="#dbdbd6" rounded="lg">
-            Completed
-          </Button>
-        </Flex>
-      </Box>
-      <Grid templateColumns="repeat(12, 1fr)" gap={8}>
-        <GridItem colSpan={8}>
-          <Box>
-            <Grid  gap="6">
-              <GridItem>
-                <CardOrder />
-              </GridItem>
-            </Grid>
-          </Box>
-        </GridItem>
-        <GridItem borderRadius="18px" colSpan={4} padding="18px" bg="white">
-          <DetailOrder />
-        </GridItem>
-      </Grid>
-    </Box>
-  );
+const OrderView = (props: Props) => {
+	const checkOrderStatus = (status: string) => {
+		switch (status) {
+			case "processing":
+				return {
+					status: "Đang xử lý",
+					color: "#ffe066",
+					background: "#ffe0661a",
+				};
+			case "confirmed":
+				return {
+					status: "Đã xác nhận",
+					color: "#0abb87",
+					background: "#0abb871a",
+				};
+			case "delivering":
+				return {
+					status: "Đang vận chuyển",
+					color: "#0abb87",
+					background: "#0abb871a",
+				};
+			case "cancelled":
+				return {
+					status: "Đã hủy",
+					color: "#fe3464",
+					background: "#fe34641a",
+				};
+			case "delivered":
+				return {
+					status: "Hoàn thành",
+					color: "#0abb87",
+					background: "#0abb871a",
+				};
+		}
+	};
+
+	return (
+		<Box
+			mt={8}
+			px={3}
+		>
+			<Box mb={8}>
+				<Flex gap={4}>
+					{status.map((item: any) => {
+						return (
+							<Button
+								color={item.color}
+								backgroundColor={item.background}
+								position="relative"
+								_before={{
+									w: 5,
+									h: 5,
+									rounded: "full",
+									position: "absolute",
+									backgroundColor: "red",
+								}}
+							>
+								{item.title}
+							</Button>
+						);
+					})}
+				</Flex>
+			</Box>
+			<Grid
+				templateColumns="repeat(12, 1fr)"
+				gap={8}
+			>
+				<GridItem colSpan={8}>
+					<Box>
+						<Grid gap="6">
+							<GridItem>
+								<CardOrder />
+							</GridItem>
+							<GridItem>
+								<CardOrder />
+							</GridItem>
+						</Grid>
+					</Box>
+				</GridItem>
+				<GridItem
+					colSpan={4}
+					p={6}
+					bg="white"
+					rounded="sm"
+				>
+					<OrderCard />
+				</GridItem>
+			</Grid>
+		</Box>
+	);
 };
 
 export default OrderView;

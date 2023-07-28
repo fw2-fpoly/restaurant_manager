@@ -20,14 +20,14 @@ import {
   IconCash,
   IconQrCode,
   LogoIcon,
-  TableForIcon,
-  TableSixIcon,
-  TableTwoIcon,
+  // TableForIcon,
+  // TableSixIcon,
+  // TableTwoIcon,
   WalletIcon,
 } from "../../../components/Icons";
 import { useSelector, useDispatch } from "react-redux";
 
-import { table } from "~/utils/data";
+// import { table } from "~/utils/data";
 import { IProduct } from "~/interface/products";
 import { IBill } from "~/interface/order";
 import RadioCard from "./PayMent";
@@ -175,9 +175,9 @@ const OrderDetail = (props: Props) => {
             Available table : T2
           </Text>
           <Grid gap={2} templateColumns="repeat(5, 1fr)">
-            {table.map((item) => {
+            {[].map((item) => {
               return (
-                <GridItem key={item._id}>
+                <GridItem key={item}>
                   <Button
                     w="100%"
                     h="auto"
@@ -192,15 +192,15 @@ const OrderDetail = (props: Props) => {
                   >
                     <IconButton
                       aria-label="payment"
-                      icon={
-                        item.capacity === 2 ? (
-                          <TableTwoIcon size={12} />
-                        ) : item.capacity === 4 ? (
-                          <TableForIcon size={12} />
-                        ) : (
-                          <TableSixIcon size={12} />
-                        )
-                      }
+                      // icon={
+                      //   item.capacity === 2 ? (
+                      //     <TableTwoIcon size={12} />
+                      //   ) : item.capacity === 4 ? (
+                      //     <TableForIcon size={12} />
+                      //   ) : (
+                      //     <TableSixIcon size={12} />
+                      //   )
+                      // }
                       background="none"
                       color={
                         item.status === "available" ? "green.400" : "gray.100"

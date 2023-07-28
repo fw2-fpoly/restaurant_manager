@@ -15,10 +15,17 @@ import { LoginView } from "~/views/Login";
 import { RegisterView } from "~/views/Register";
 import { Profile } from "~/views/Profile";
 import { ResetPasswordView } from "~/views/ResetPassword";
+
 import Manager from "~/views/Manager";
 import Dashboard from "~/views/Manager/Dashboard";
 import ProductManager from "~/views/Manager/ProductManager";
 import KitchenView from "~/views/Kitchen/Kitchen";
+import CateManager from "~/views/Manager/CateFood";
+import { elements } from "chart.js";
+import Editproduct from "~/views/Manager/ProductManager/components/Editproduct";
+import Editcate from "~/views/Manager/CateFood/components/Editcate";
+import StaffsManager from "~/views/Manager/staffs";
+import EditStaff from "~/views/Manager/staffs/components/EditStaff";
 
 const routes: RouteObject[] = [
 	{
@@ -67,6 +74,26 @@ const routes: RouteObject[] = [
 							{
 								path: "products",
 								element: <ProductManager />,
+							},
+							{
+								path: "products/edit/:id",
+								element: <Editproduct />,
+							},
+							{
+								path: "cates",
+								element: <CateManager />,
+							},
+							{
+								path: "cates/edit/:id",
+								element: <Editcate />,
+							},
+							{
+								path: "staff",
+								element: <StaffsManager />,
+							},
+							{
+								path: "staff/edit/:id",
+								element: <EditStaff />,
 							},
 						],
 					},

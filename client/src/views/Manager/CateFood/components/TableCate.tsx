@@ -1,5 +1,5 @@
 import React from "react";
-import { Thead, Tbody, Tr, Th, Td, TableContainer, Table, Image } from "@chakra-ui/react";
+import { Thead, Tbody, Tr, Th, Td, TableContainer, Table } from "@chakra-ui/react";
 
 import { IconButton, Tag } from "@chakra-ui/react";
 import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
@@ -7,10 +7,10 @@ import { MoreIcon } from "~/components/Icons";
 import { useNavigate } from "react-router";
 
 type Props = {};
-const TableProducts = (props: Props) => {
+const TableCate = (props: Props) => {
 	const navigate = useNavigate();
-	const editproduct = () => {
-		navigate("/manager/products/edit/1");
+	const editcate = () => {
+		navigate("/manager/cates/edit/1");
 	};
 	return (
 		<>
@@ -22,16 +22,10 @@ const TableProducts = (props: Props) => {
 								Id
 							</Th>
 							<Th fontSize="md" fontWeight="bold">
-								Tên món
+								Tên danh mục
 							</Th>
 							<Th fontSize="md" fontWeight="bold">
-								Ảnh
-							</Th>
-							<Th fontSize="md" fontWeight="bold">
-								Giá
-							</Th>
-							<Th fontSize="md" fontWeight="bold">
-								Thời Gian
+								Số lượng sản phẩm
 							</Th>
 							<Th fontSize="md" fontWeight="bold">
 								Action
@@ -42,11 +36,7 @@ const TableProducts = (props: Props) => {
 						<Tr>
 							<Td>#9999</Td>
 							<Td>28 Jun 2022</Td>
-							<Td>
-								<Image w={"50"} h={"50"} src="https://picsum.photos/200/300.jpg" />
-							</Td>
 							<Td>11</Td>
-							<Td>$ 45.00</Td>
 							<Td>
 								<Menu>
 									<MenuButton
@@ -61,7 +51,7 @@ const TableProducts = (props: Props) => {
 									/>
 									<MenuList>
 										<MenuItem>Delete</MenuItem>
-										<MenuItem onClick={() => editproduct()}>Update</MenuItem>
+										<MenuItem onClick={() => editcate()}>Update</MenuItem>
 									</MenuList>
 								</Menu>
 							</Td>
@@ -73,4 +63,4 @@ const TableProducts = (props: Props) => {
 	);
 };
 
-export default TableProducts;
+export default TableCate;

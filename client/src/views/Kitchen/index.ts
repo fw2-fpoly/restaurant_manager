@@ -1,1 +1,1 @@
-export { default as KitChenView } from "./KitChen";
+export { default as KitChenView } from "./Kitchen";
