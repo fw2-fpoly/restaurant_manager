@@ -1,62 +1,17 @@
-import createError from "http-errors"
-import User from "../models/user.model"
-import { registerSchema, loginSchema } from "../validations"
-import { v4 as uuidv4 } from "uuid"
-import { sendEmail } from "../utils/email"
-import { signAccessToken, signRefeshToken } from "../middlewares/jwt.middleware"
 import bcryptjs from "bcryptjs"
-
+import createError from "http-errors"
 
 export async function login(req, res, next) {
 	try {
-		const { email, password } = req.body
-		const { error } = loginSchema.validate(req.body, { abortEarly: false });
+		// logic xử lý
 
-		if (error) {
-			const errors = {};
-			error.details.forEach((e) => (errors[e.path] = e.message));
-			throw createError.BadRequest(errors);
-		}
-
-		const doc = await User.findOne({
-			email
-		})
-
-		const checkPassword = await bcryptjs.compare(password, doc.password)
-
-		if (!doc || !checkPassword) {
-			throw createError.Unauthorized('Email hoặc mật khẩu không chính xác')
-		}
-
-		const accessToken = signAccessToken({
-			_id: doc._id,
-			roles: doc.roles
-		})
-
-		const refreshToken = signRefeshToken({
-			_id: doc._id,
-			roles: doc.roles
-		})
-
-		const optionsCookie = {
-			httpOnly: true,
-			maxAge: 60 * 24 * 60 * 1000,
-			sameSite: 'none',
-			secure: true
-		}
-
-		res.cookie('refresh_token', refreshToken, optionsCookie)
-
-		// 
-		doc.password = undefined
+		// trong trường lợp mà muốn bắt lỗi
+		// VD: throw createError.BadRequest("Email chưa được đăng ký");
 
 		return res.json({
 			status: 200,
 			message: "Thành công",
-			data: {
-				user: doc,
-				access_token: accessToken
-			},
+			data: [],
 		})
 	} catch (error) {
 		next(error)
