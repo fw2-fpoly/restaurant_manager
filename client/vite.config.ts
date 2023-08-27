@@ -15,7 +15,7 @@ export default defineConfig(({ command, mode }) => {
 	return {
 		plugins: [react(), tsconfigPaths()],
 		server: {
-			port: 3001,
+			port: 3000,
 			watch: {
 				usePolling: true,
 			},

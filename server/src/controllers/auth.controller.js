@@ -1,10 +1,11 @@
-import createError from "http-errors"
-import User from "../models/user.model"
-import { registerSchema, loginSchema } from "../validations"
-import { v4 as uuidv4 } from "uuid"
-import { sendEmail } from "../utils/email"
-import { signAccessToken, signRefeshToken } from "../middlewares/jwt.middleware"
 import bcryptjs from "bcryptjs"
+import createError from "http-errors"
+import moment from "moment/moment"
+import { v4 as uuidv4 } from "uuid"
+import { signAccessToken, signRefeshToken, verifyRefreshToken } from "../middlewares/jwt.middleware"
+import User from "../models/user.model"
+import { sendEmail } from "../utils/email"
+import { loginSchema, registerSchema, updateUserInfoSchema } from "../validations"
 
 
 export async function login(req, res, next) {
@@ -150,5 +151,89 @@ export async function email(req, res, next) {
 }
 
 export async function refreshToken(req, res, next) {
+	try {
+		const token = req.cookies.refresh_token
 
+		if (!token) {
+			throw createError.Unauthorized('Unauthorized.....')
+		}
+
+		const decode = await verifyRefreshToken(token)
+		const accessToken = signAccessToken(decode)
+
+		return res.json({
+			status: 200,
+			message: "Thành công",
+			data: {
+				access_token: accessToken
+			}
+		})
+	} catch (error) {
+		next(error)
+	}
+}
+
+export async function logout(req, res, next) {
+	try {
+		const token = req.cookies.refresh_token
+
+		if (!token) {
+			throw createError.Unauthorized('Unauthorized.....')
+		}
+
+		res.clearCookie("refresh_token")
+
+		return res.json({
+			status: 200,
+			message: "Thành công",
+			data: []
+		})
+	} catch (error) {
+		next(error)
+	}
+}
+
+export async function userInfo(req, res, next) {
+	try {
+		const user = req.user
+		const doc = await User.findById(user.id).select(['-_id', '-password', '-roles', '-email'])
+
+		return res.json({
+			status: 200,
+			message: "Thành công",
+			data: doc
+		})
+
+	} catch (error) {
+		next(error)
+	}
+}
+
+export async function updateUserInfo(req, res, next) {
+	try {
+		const { id } = req.user
+		const { error } = updateUserInfoSchema.validate(req.body, { abortEarly: false });
+
+		if (error) {
+			const errors = {};
+			error.details.forEach((e) => (errors[e.path] = e.message));
+			throw createError.BadRequest(errors);
+		}
+
+		const doc = await User.findOneAndUpdate({
+			_id: id
+		}, {
+			$set: { ...req.body, updated_at: moment().toISOString() }
+		}, {
+			new: true
+		})
+
+		return res.json({
+			status: 200,
+			message: "Thành công",
+			data: doc
+		})
+	} catch (error) {
+		next(error)
+	}
 }

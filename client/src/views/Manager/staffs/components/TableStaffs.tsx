@@ -14,26 +14,22 @@ const TableStaffs = (props: Props) => {
 	};
 	return (
 		<>
-			<TableContainer borderRadius="8px" background="#ffffff">
-				<Table size="md" variant="simple">
+			<TableContainer
+				borderRadius="8px"
+				background="#ffffff"
+			>
+				<Table
+					fontSize="sm"
+					fontWeight="600"
+				>
 					<Thead>
 						<Tr>
-							<Th fontSize="md" fontWeight="bold">
-								Id
-							</Th>
-							<Th fontSize="md" fontWeight="bold">
-								Tên Nhân Viên
-							</Th>
-							<Th fontSize="md" fontWeight="bold">
-								Ảnh
-							</Th>
-
-							<Th fontSize="md" fontWeight="bold">
-								Chức Vụ
-							</Th>
-							<Th fontSize="md" fontWeight="bold">
-								Action
-							</Th>
+							<Th>#</Th>
+							<Th>Ngày</Th>
+							<Th>Tên Nhân Viên</Th>
+							<Th>Ảnh</Th>
+							<Th>Chức Vụ</Th>
+							<Th>Action</Th>
 						</Tr>
 					</Thead>
 					<Tbody>
@@ -41,7 +37,11 @@ const TableStaffs = (props: Props) => {
 							<Td>#9999</Td>
 							<Td>28 Jun 2022</Td>
 							<Td>
-								<Image w={"50"} h={"50"} src="https://picsum.photos/200/300.jpg" />
+								<Image
+									w={"50"}
+									h={"50"}
+									src="https://picsum.photos/200/300.jpg"
+								/>
 							</Td>
 							<Td>11</Td>
 							<Td>$ 45.00</Td>

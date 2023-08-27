@@ -8,7 +8,7 @@ export function signAccessToken(user) {
 		roles: user.roles
 	}
 	const options = {
-		expiresIn: "3h"
+		expiresIn: "2h"
 	}
 
 	const token = jwt.sign(payload, process.env.JWT_SECRET_ACCESS_TOKEN, options)
@@ -38,4 +38,21 @@ export function verifyRefreshToken(token) {
 			resolve(decode)
 		})
 	})
+}
+
+export function verifyAccessToken(req, res, next) {
+	const token = req.headers?.authorization?.split(" ")[1];
+
+	if (!token) {
+		return next(createError.Unauthorized("Vui lòng đăng nhập"));
+	}
+
+	jwt.verify(token, process.env.JWT_SECRET_ACCESS_TOKEN, (err, payload) => {
+		if (err) {
+			return next(createError.Unauthorized(err.message));
+		}
+
+		req.user = payload;
+		next();
+	});
 }
