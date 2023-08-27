@@ -1,63 +1,17 @@
 import bcryptjs from "bcryptjs"
 import createError from "http-errors"
-import moment from "moment/moment"
-import { v4 as uuidv4 } from "uuid"
-import { signAccessToken, signRefeshToken, verifyRefreshToken } from "../middlewares/jwt.middleware"
-import User from "../models/user.model"
-import { sendEmail } from "../utils/email"
-import { loginSchema, registerSchema, updateUserInfoSchema } from "../validations"
-
 
 export async function login(req, res, next) {
 	try {
-		const { email, password } = req.body
-		const { error } = loginSchema.validate(req.body, { abortEarly: false });
+		// logic xử lý
 
-		if (error) {
-			const errors = {};
-			error.details.forEach((e) => (errors[e.path] = e.message));
-			throw createError.BadRequest(errors);
-		}
-
-		const doc = await User.findOne({
-			email
-		})
-
-		const checkPassword = await bcryptjs.compare(password, doc.password)
-
-		if (!doc || !checkPassword) {
-			throw createError.Unauthorized('Email hoặc mật khẩu không chính xác')
-		}
-
-		const accessToken = signAccessToken({
-			_id: doc._id,
-			roles: doc.roles
-		})
-
-		const refreshToken = signRefeshToken({
-			_id: doc._id,
-			roles: doc.roles
-		})
-
-		const optionsCookie = {
-			httpOnly: true,
-			maxAge: 60 * 24 * 60 * 1000,
-			sameSite: 'none',
-			secure: true
-		}
-
-		res.cookie('refresh_token', refreshToken, optionsCookie)
-
-		// 
-		doc.password = undefined
+		// trong trường lợp mà muốn bắt lỗi
+		// VD: throw createError.BadRequest("Email chưa được đăng ký");
 
 		return res.json({
 			status: 200,
 			message: "Thành công",
-			data: {
-				user: doc,
-				access_token: accessToken
-			},
+			data: [],
 		})
 	} catch (error) {
 		next(error)
@@ -151,89 +105,5 @@ export async function email(req, res, next) {
 }
 
 export async function refreshToken(req, res, next) {
-	try {
-		const token = req.cookies.refresh_token
 
-		if (!token) {
-			throw createError.Unauthorized('Unauthorized.....')
-		}
-
-		const decode = await verifyRefreshToken(token)
-		const accessToken = signAccessToken(decode)
-
-		return res.json({
-			status: 200,
-			message: "Thành công",
-			data: {
-				access_token: accessToken
-			}
-		})
-	} catch (error) {
-		next(error)
-	}
-}
-
-export async function logout(req, res, next) {
-	try {
-		const token = req.cookies.refresh_token
-
-		if (!token) {
-			throw createError.Unauthorized('Unauthorized.....')
-		}
-
-		res.clearCookie("refresh_token")
-
-		return res.json({
-			status: 200,
-			message: "Thành công",
-			data: []
-		})
-	} catch (error) {
-		next(error)
-	}
-}
-
-export async function userInfo(req, res, next) {
-	try {
-		const user = req.user
-		const doc = await User.findById(user.id).select(['-_id', '-password', '-roles', '-email'])
-
-		return res.json({
-			status: 200,
-			message: "Thành công",
-			data: doc
-		})
-
-	} catch (error) {
-		next(error)
-	}
-}
-
-export async function updateUserInfo(req, res, next) {
-	try {
-		const { id } = req.user
-		const { error } = updateUserInfoSchema.validate(req.body, { abortEarly: false });
-
-		if (error) {
-			const errors = {};
-			error.details.forEach((e) => (errors[e.path] = e.message));
-			throw createError.BadRequest(errors);
-		}
-
-		const doc = await User.findOneAndUpdate({
-			_id: id
-		}, {
-			$set: { ...req.body, updated_at: moment().toISOString() }
-		}, {
-			new: true
-		})
-
-		return res.json({
-			status: 200,
-			message: "Thành công",
-			data: doc
-		})
-	} catch (error) {
-		next(error)
-	}
 }

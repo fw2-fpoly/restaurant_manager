@@ -22,14 +22,3 @@ export const registerSchema = joi.object({
 })
 
 
-export const updateUserInfoSchema = joi.object({
-	first_name: joi.string().required(),
-	last_name: joi.string().required(),
-	phone: joi.string().required(),
-	address: joi.string().required(),
-	image: joi.string().required(),
-	date_of_birth: joi.string().required(),
-	gender: joi.string().required(),
-})
-
-
