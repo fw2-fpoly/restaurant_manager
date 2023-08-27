@@ -45,7 +45,7 @@ const Manager = (props: Props) => {
 			<GridItem colSpan={3}>
 				<Box
 					h="full"
-					p={6}
+					p={8}
 					bgColor="white"
 					rounded="sm"
 				>

@@ -31,11 +31,11 @@ interface ILinks {
 }
 
 const profileSchema = Joi.object({
-	firstname: Joi.string().trim().required().messages({
+	first_name: Joi.string().trim().required().messages({
 		"string.empty": "First name không được để trống",
 		"any.required": "Trường first name là bắt buộc",
 	}),
-	lastname: Joi.string().trim().required().messages({
+	last_name: Joi.string().trim().required().messages({
 		"string.empty": "Last Name không được để trống",
 		"any.required": "Trường last name là bắt buộc",
 	}),
@@ -72,17 +72,17 @@ const profileSchema = Joi.object({
 
 const links: ILinks[] = [
 	{
-		title: "Personal Infomation",
+		title: "Thông tin tin chung",
 		path: "",
 		icon: UserIcon,
 	},
 	{
-		title: "Login & Password",
+		title: "Đăng ký  và mật khẩu ",
 		path: "",
 		icon: PassIcon,
 	},
 	{
-		title: "Logout",
+		title: "Đăng xuất",
 		path: "/",
 		icon: LogoutIcon,
 	},
@@ -105,39 +105,45 @@ const Profile = (props: Props) => {
 		<Grid
 			w="full"
 			templateColumns="repeat(12, 1fr)"
-			gap="6"
-			h={"full"}
+			gap="12"
+			px="3"
+			my="8"
 		>
 			{/* Box 1 */}
 			<GridItem colSpan={3}>
 				<Box
-					h={"full"}
-					p={5}
-					mx={5}
-					bgColor={"white"}
+					h="full"
+					p="8"
+					bgColor="white"
 				>
 					<Img
 						borderRadius="full"
-						boxSize="160px"
+						boxSize="120px"
 						objectFit="cover"
-						objectPosition="top"
+						objectPosition="center"
 						mx="auto"
 						my="auto"
 						src="https://haycafe.vn/wp-content/uploads/2022/02/Anh-gai-xinh-Viet-Nam.jpg"
 					/>
 					<Stack
 						mt="6"
-						spacing="3"
+						spacing="2"
 					>
 						<Heading
-							size="md"
+							size="sm"
 							mx="auto"
 						>
 							Rose Sadan
 						</Heading>
-						<Text mx="auto">Raasi Kash</Text>
+						<Text
+							mx="auto"
+							fontSize="sm"
+							mt={1}
+						>
+							Nhân Viên
+						</Text>
 
-						<div>
+						<Box mt={4}>
 							{links?.map((link: ILinks, index: number) => {
 								const Icon = link.icon;
 								return (
@@ -198,7 +204,7 @@ const Profile = (props: Props) => {
 									</Link>
 								);
 							})}
-						</div>
+						</Box>
 					</Stack>
 				</Box>
 			</GridItem>
@@ -212,7 +218,6 @@ const Profile = (props: Props) => {
 					<Heading
 						size="md"
 						mx="auto"
-						my="20px"
 					>
 						Rose Sadan
 					</Heading>
@@ -220,6 +225,7 @@ const Profile = (props: Props) => {
 					<form
 						style={{
 							width: "100%",
+							marginTop: "16px",
 						}}
 						onSubmit={handleSubmit(onSubmit)}
 					>
@@ -236,13 +242,13 @@ const Profile = (props: Props) => {
 										colorScheme="orange"
 										value="1"
 									>
-										Male
+										Nam
 									</Radio>
 									<Radio
 										colorScheme="orange"
 										value="2"
 									>
-										Female
+										Nữ
 									</Radio>
 								</Stack>
 							</RadioGroup>
@@ -252,29 +258,29 @@ const Profile = (props: Props) => {
 							>
 								<FormControl
 									flex={1}
-									isInvalid={errors.firstname as any}
+									isInvalid={errors.first_name as any}
 								>
-									<FormLabel>First Name</FormLabel>
+									<FormLabel>Họ đệm</FormLabel>
 									<Input
-										id="firstname"
-										type="firstname"
-										placeholder="First Name"
+										id="first_name"
+										type="first_name"
+										placeholder="Nguyen F"
 										size="lager"
-										{...register("firstname")}
+										{...register("first_name")}
 									/>
 									<FormErrorMessage>
-										{(errors.firstname as any) && (errors?.firstname?.message as any)}
+										{(errors.first_name as any) && (errors?.first_name?.message as any)}
 									</FormErrorMessage>
 								</FormControl>
 								<FormControl
 									flex={1}
-									isInvalid={errors.lastname as any}
+									isInvalid={errors.last_name as any}
 								>
-									<FormLabel>Last Name</FormLabel>
+									<FormLabel>Tên Đệm</FormLabel>
 									<Input
-										id="lastname"
-										type="lastname"
-										placeholder="Last Name"
+										id="last_name"
+										type="text"
+										placeholder="Truong..."
 										size="lager"
 										{...register("lastname")}
 									/>
@@ -305,11 +311,11 @@ const Profile = (props: Props) => {
 								flex={1}
 								isInvalid={errors.address as any}
 							>
-								<FormLabel>Address</FormLabel>
+								<FormLabel>Địa chỉ</FormLabel>
 								<Input
 									id="address"
 									type="address"
-									placeholder="Address"
+									placeholder="Ba Vi, Ha Nọi"
 									size="lager"
 									{...register("address")}
 								/>
@@ -326,15 +332,14 @@ const Profile = (props: Props) => {
 									flex={1}
 									isInvalid={errors.phone as any}
 								>
-									<FormLabel>Phone number</FormLabel>
+									<FormLabel>SĐT</FormLabel>
 									<Input
 										id="phone"
 										type="phone"
-										placeholder="Phone"
+										placeholder="012345678"
 										size="lager"
 										{...register("phone")}
 									/>
-
 									<FormErrorMessage>
 										{(errors.phone as any) && (errors?.phone?.message as any)}
 									</FormErrorMessage>
@@ -343,7 +348,7 @@ const Profile = (props: Props) => {
 									flex={1}
 									isInvalid={errors.date as any}
 								>
-									<FormLabel>Date of birth</FormLabel>
+									<FormLabel>Ngày sinh</FormLabel>
 									<Input
 										id="date"
 										type="date"
@@ -356,59 +361,14 @@ const Profile = (props: Props) => {
 								</FormControl>
 							</Flex>
 
-							<Flex
-								direction="row"
-								gap={4}
-							>
-								<FormControl
-									flex={1}
-									isInvalid={errors.location as any}
-								>
-									<FormLabel>Location</FormLabel>
-									<Input
-										id="location"
-										type="location"
-										placeholder="Location"
-										size="lager"
-										{...register("location")}
-									/>
-
-									<FormErrorMessage>
-										{(errors.location as any) && (errors?.location?.message as any)}
-									</FormErrorMessage>
-								</FormControl>
-								<FormControl
-									flex={1}
-									isInvalid={errors.code as any}
-								>
-									<FormLabel>Postal Code</FormLabel>
-									<Input
-										id="code"
-										type="code"
-										placeholder="Postal Code"
-										size="lager"
-										{...register("code")}
-									/>
-									<FormErrorMessage>
-										{(errors.code as any) && (errors?.code?.message as any)}
-									</FormErrorMessage>
-								</FormControl>
-							</Flex>
-
-
-
-							<FormControl >
+							<FormControl>
 								<Button
 									type="submit"
 									width="full"
-									size="lager"
-									backgroundColor="primary.background"
-									color="primary.font"
 								>
-									Save Changes
+									Lưu thông tin
 								</Button>
 							</FormControl>
-
 						</Flex>
 					</form>
 				</Box>

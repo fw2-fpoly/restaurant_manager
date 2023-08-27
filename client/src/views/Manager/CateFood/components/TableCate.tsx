@@ -14,22 +14,21 @@ const TableCate = (props: Props) => {
 	};
 	return (
 		<>
-			<TableContainer borderRadius="8px" background="#ffffff">
-				<Table size="md" variant="simple">
+			<TableContainer
+				rounded="sm"
+				background="#ffffff"
+			>
+				<Table
+					size="md"
+					fontSize="sm"
+					fontWeight="600"
+				>
 					<Thead>
 						<Tr>
-							<Th fontSize="md" fontWeight="bold">
-								Id
-							</Th>
-							<Th fontSize="md" fontWeight="bold">
-								Tên danh mục
-							</Th>
-							<Th fontSize="md" fontWeight="bold">
-								Số lượng sản phẩm
-							</Th>
-							<Th fontSize="md" fontWeight="bold">
-								Action
-							</Th>
+							<Th>Id</Th>
+							<Th>Tên danh mục</Th>
+							<Th>Số lượng sản phẩm</Th>
+							<Th>Action</Th>
 						</Tr>
 					</Thead>
 					<Tbody>
